@@ -1,0 +1,32 @@
+.dropdown-toggle::after {
+    display: none;
+}
+
+.text-decoration-none {
+    text-decoration: none!important;
+}
+
+.icon-width {
+    width: 2rem;
+}
+
+img {
+    height: 2rem;
+}
+
+#titulo {
+    text-shadow: #d4d4d4 2px 2px 3px;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.nav-item {
+    font-size: 1em;
+    transition: font-size 0.1s;
+}
+
+.nav-item:hover {
+    font-size: 1.1em;
+}

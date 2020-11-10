@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="assets/images/Logo.png">
+            <span class="ml-3 font-weight-bold" id="titulo">CHUCHERILANDIA</span>
+        </a>
+        <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar4">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbar4">
+            <ul class="navbar-nav mr-auto pl-lg-4">
+                <li class="nav-item px-lg-2">
+                    <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> <span class="d-inline-block d-lg-none icon-width"><i class="fas fa-home"></i></span>Home</a>
+                </li>
+                <li class="nav-item px-lg-2"> <a class="nav-link" routerLink="contact" routerLinkActive="active"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-phone"></i></span>Contáctanos</a> </li>
+                <li class="nav-item px-lg-2"> <a class="nav-link" routerLink="about" routerLinkActive="active"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-store-alt"></i></span>Acerca de Nosotros</a> </li>
+
+                <li class="nav-item px-lg-2 dropdown d-menu">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-chevron-down"></i></span>Administrar
+                </a>
+                    <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto mt-3 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-instagram"></i><span class="d-lg-none ml-3">Instagram</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--    EJEMPLO DE COMO DEBE SER EL NAVBAR EN ANGULAR
+<div class="nav">
+    <ul>
+        <li class="home"><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+        <li class="json"><a routerLink="json" routerLinkActive="active">JSON</a></li>
+        <li class="pipes"><a routerLink="pipes" routerLinkActive="active">Pipes</a></li>
+    </ul>
+</div>
+-->

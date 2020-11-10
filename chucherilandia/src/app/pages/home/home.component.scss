@@ -1,0 +1,9 @@
+img {
+    max-width: 250px;
+    transition: transform 0.5s;
+}
+
+img:hover {
+    max-width: 250px;
+    transform: rotate(360deg);
+}
