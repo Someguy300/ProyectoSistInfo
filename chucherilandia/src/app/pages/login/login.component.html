@@ -1,0 +1,35 @@
+<div class="container py-5 mt-5" id="Contenedor">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <h1>Login</h1>
+                <hr>
+                <div class="row">
+                    <div class="text-center" style="width: 100%;">
+                        <form class="mb-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escriba su correo electronico" formControlName="email" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Escriba su contraseña" formControlName="password" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                        <div class="or-container mt-2 mb-2">
+                            <div class="line-separator"></div>
+                            <div class="or-label">or</div>
+                            <div class="line-separator"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button (click)="authWithGoogle()" class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="#"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Signup Using Google</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
