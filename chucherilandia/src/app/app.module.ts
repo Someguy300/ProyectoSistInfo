@@ -60,7 +60,6 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     BrowserModule, 
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
