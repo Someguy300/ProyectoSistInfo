@@ -6,7 +6,7 @@
                 <hr>
                 <div class="row">
                     <div class="text-center" style="width: 100%;">
-                        <form class="mb-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escriba su correo electronico" formControlName="email" />
@@ -24,7 +24,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <button (click)="authWithGoogle()" class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="#"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Signup Using Google</button>
+                                <button (click)="authWithGoogle()" class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="#"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Login Using Google</button>
                             </div>
                         </div>
                     </div>
