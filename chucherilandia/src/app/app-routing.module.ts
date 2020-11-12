@@ -12,17 +12,20 @@ import { MetenvioUpdateComponent } from './pages/admin/metenvio/metenvio-update/
 
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'metodospago', component: MetpagoComponent },
-  { path: 'metodopago/create', component: MetpagoCreateComponent},
-  { path: 'metodopago/:id/update', component: MetpagoUpdateComponent},
-  { path: 'metodosenvio', component: MetenvioComponent },
-  { path: 'metodoenvio/create', component: MetenvioCreateComponent},
-  { path: 'metodoenvio/:id/update', component: MetenvioUpdateComponent},
+
+  { path: 'metodospago',  canActivate: [AuthenticationGuard], component: MetpagoComponent },
+  { path: 'metodopago/create', canActivate: [AuthenticationGuard],component: MetpagoCreateComponent},
+  { path: 'metodopago/:id/update',canActivate: [AuthenticationGuard], component: MetpagoUpdateComponent},
+  { path: 'metodosenvio', canActivate: [AuthenticationGuard],component: MetenvioComponent },
+  { path: 'metodoenvio/create',canActivate: [AuthenticationGuard], component: MetenvioCreateComponent},
+  { path: 'metodoenvio/:id/update',canActivate: [AuthenticationGuard], component: MetenvioUpdateComponent},
+
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' },
