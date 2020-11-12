@@ -9,19 +9,29 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
 import { EfectoComponent } from './components/efecto/efecto.component';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { firebaseConfig } from '../environments/environment';
+
+
 import { MetpagoComponent } from './pages/admin/metpago/metpago.component';
 import { MetpagoCreateComponent } from './pages/admin/metpago/metpago-create/metpago-create.component';
 import { MetpagoUpdateComponent } from './pages/admin/metpago/metpago-update/metpago-update.component';
 import { MetpagoFormComponent } from './components/metpago-form/metpago-form.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MetenvioComponent } from './pages/admin/metenvio/metenvio.component';
 import { MetenvioCreateComponent } from './pages/admin/metenvio/metenvio-create/metenvio-create/metenvio-create.component';
 import { MetenvioFormComponent } from './components/metenvio-form/metenvio-form/metenvio-form.component';
 import { MetenvioUpdateComponent } from './pages/admin/metenvio/metenvio-update/metenvio-update/metenvio-update.component';
 
+// Firebase Imports
+import { AngularFireModule } from '@angular/fire';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { firebaseConfig } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+// Firebase Configuration
+import { environment } from 'src/environments/environment';
+import { LoginComponent } from './pages/login/login.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +49,8 @@ import { MetenvioUpdateComponent } from './pages/admin/metenvio/metenvio-update/
     MetenvioCreateComponent,
     MetenvioFormComponent,
     MetenvioUpdateComponent,
+    LoginComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,8 +58,12 @@ import { MetenvioUpdateComponent } from './pages/admin/metenvio/metenvio-update/
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     BrowserModule, 
-    FormsModule, 
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

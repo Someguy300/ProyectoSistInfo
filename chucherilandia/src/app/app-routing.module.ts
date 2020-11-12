@@ -10,6 +10,8 @@ import { MetenvioComponent } from './pages/admin/metenvio/metenvio.component';
 import { MetenvioCreateComponent } from './pages/admin/metenvio/metenvio-create/metenvio-create/metenvio-create.component';
 import { MetenvioUpdateComponent } from './pages/admin/metenvio/metenvio-update/metenvio-update/metenvio-update.component';
 
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +23,11 @@ const routes: Routes = [
   { path: 'metodosenvio', component: MetenvioComponent },
   { path: 'metodoenvio/create', component: MetenvioCreateComponent},
   { path: 'metodoenvio/:id/update', component: MetenvioUpdateComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'sign-up', component: SignUpComponent },
+  { path: '**', pathMatch: 'full', redirectTo: '' },
+  // EJEMPLO DE UNA RUTA PROTEGIDA
+  //{ path: 'tasks', canActivate: [AuthenticationGuard], component: TasksPageComponent, },
 ];
 
 @NgModule({

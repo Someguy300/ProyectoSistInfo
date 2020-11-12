@@ -14,9 +14,11 @@
                 </li>
                 <li class="nav-item px-lg-2"> <a class="nav-link" routerLink="contact" routerLinkActive="active"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-phone"></i></span>Contáctanos</a> </li>
                 <li class="nav-item px-lg-2"> <a class="nav-link" routerLink="about" routerLinkActive="active"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-store-alt"></i></span>Acerca de Nosotros</a> </li>
-
+                <li class="nav-item px-lg-2"> <a class="nav-link" routerLink="sign-up" *ngIf="!isAuthenticated" routerLinkActive="active"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-user-plus"></i></span>Sign-up</a> </li>
+                <li class="nav-item px-lg-2"> <a class="nav-link" routerLink="login" *ngIf="!isAuthenticated" routerLinkActive="active"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-user"></i></span>Login</a></li>
+                <li class="nav-item px-lg-2"> <a class="nav-link" href="#" (click)="logout()" *ngIf="isAuthenticated"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-sign-out-alt"></i></span>Cerrar Sesión</a></li>
                 <li class="nav-item px-lg-2 dropdown d-menu">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-chevron-down"></i></span>Administrar
+                    <a class="nav-link dropdown-toggle" href="#" *ngIf="isAuthenticated" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-chevron-down"></i></span>Administrar
                 </a>
                     <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
                         <a class="dropdown-item" routerLink="metodospago" routerLinkActive="active">Metodos de Pago</a>
