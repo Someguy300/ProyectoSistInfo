@@ -9,6 +9,16 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
 import { EfectoComponent } from './components/efecto/efecto.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { firebaseConfig } from '../environments/environment';
+import { MetpagoComponent } from './pages/admin/metpago/metpago.component';
+import { MetpagoCreateComponent } from './pages/admin/metpago/metpago-create/metpago-create.component';
+import { MetpagoUpdateComponent } from './pages/admin/metpago/metpago-update/metpago-update.component';
+import { MetpagoFormComponent } from './components/metpago-form/metpago-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,11 +26,20 @@ import { EfectoComponent } from './components/efecto/efecto.component';
     HomeComponent,
     ContactComponent,
     AboutComponent,
-    EfectoComponent
+    EfectoComponent,
+    MetpagoComponent,
+    MetpagoCreateComponent,
+    MetpagoUpdateComponent,
+    MetpagoFormComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    BrowserModule, 
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
