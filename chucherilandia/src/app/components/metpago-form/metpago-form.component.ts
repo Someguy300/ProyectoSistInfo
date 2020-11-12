@@ -7,8 +7,8 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Metodopago } from '../../models/metodopago.model';
-import { MetodopagoService } from '../../services/metodopago.service';
+import { Metodopago } from '../../models/metodopago/metodopago.model'
+import { MetodopagoService } from '../../services/metodopago/metodopago.service';
 
 @Component({
   selector: 'app-metpago-form',
@@ -57,36 +57,36 @@ export class MetpagoFormComponent implements OnInit {
 
   createForm(): void {
     this.metodopagoForm = this.fb.group({
-      nombre : ['', Validators.compose([Validators.required])],
+      nombre : [''],
     });
   }
 
-  createTask(data: Metodopago): void {
+  createMetodopago(data: Metodopago): void {
     this.loading = true;
     this.metodopagoService.createMetpago(data).then((res) => {
       this.loading = false;
-      this.router.navigate(['']);
+      this.router.navigate(['metodospago']);
     });
   }
 
-  updateTask(data: Metodopago): void {
+  updateMetodopago(data: Metodopago): void {
     this.loading = true;
     this.metodopagoService.updateMetPago(data, this.metodopagoId).then((res) => {
       this.loading = false;
-      this.router.navigate(['']);
+      this.router.navigate(['metodospago']);
     });
   }
 
   onSubmit(): void {
-    const dataTask: Metodopago = {
+    const dataMetpago: Metodopago = {
       nombre: this.metodopagoForm.get('nombre').value
     };
 
     if (this.editMetodopago) {
-      this.updateTask(dataTask);
+      this.updateMetodopago(dataMetpago);
       return;
     }
 
-    this.createTask(dataTask);
+    this.createMetodopago(dataMetpago);
   }
 }

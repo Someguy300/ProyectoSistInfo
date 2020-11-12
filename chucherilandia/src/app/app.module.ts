@@ -17,6 +17,10 @@ import { MetpagoCreateComponent } from './pages/admin/metpago/metpago-create/met
 import { MetpagoUpdateComponent } from './pages/admin/metpago/metpago-update/metpago-update.component';
 import { MetpagoFormComponent } from './components/metpago-form/metpago-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MetenvioComponent } from './pages/admin/metenvio/metenvio.component';
+import { MetenvioCreateComponent } from './pages/admin/metenvio/metenvio-create/metenvio-create/metenvio-create.component';
+import { MetenvioFormComponent } from './components/metenvio-form/metenvio-form/metenvio-form.component';
+import { MetenvioUpdateComponent } from './pages/admin/metenvio/metenvio-update/metenvio-update/metenvio-update.component';
 
 
 @NgModule({
@@ -31,6 +35,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MetpagoCreateComponent,
     MetpagoUpdateComponent,
     MetpagoFormComponent,
+    MetenvioComponent,
+    MetenvioCreateComponent,
+    MetenvioFormComponent,
+    MetenvioUpdateComponent,
   ],
   imports: [
     BrowserModule,

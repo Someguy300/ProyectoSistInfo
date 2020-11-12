@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body">
             <div class="container">
-                <h1>CRUD metodos de pago</h1>
+                <h1>CRUD metodos de envio</h1>
                 <hr>
                 <table class="table table-striped">
                     <thead class="">
@@ -13,34 +13,34 @@
                     </thead>
                     <tbody>
                       <!-- Print all Tasks in table -->
-                      <tr *ngFor="let metodopago of metodosdepago">
-                        <th scope="row">{{ metodopago.$key }}</th>
-                        <td>{{ metodopago.nombre }}</td>
+                      <tr *ngFor="let metodoenvio of metodosdeenvio">
+                        <th scope="row">{{ metodoenvio.$key }}</th>
+                        <td>{{ metodoenvio.nombre }}</td>
                         <td>
                           <a
-                            [routerLink]="['/metodopago',metodopago.$key,'update']"
+                            [routerLink]="['/metodoenvio',metodoenvio.$key,'update']"
                             class="btn btn-info btn-sm mr-2"
                           >
-                            EditMetodopago
+                            EditMetodoEnvio
                           </a>
                   
                           <button
                             type="button"
                             class="btn btn-danger btn-sm"
-                            (click)="deleteMetodopago(metodopago.$key)"
+                            (click)="deleteMetodoenvio(metodoenvio.$key)"
                             [disabled]="loading"
                           >
-                            DeleteMetododepago
+                            DeleteMetodoEnvio
                           </button>
                         </td>
                       </tr>
                     </tbody>
                 </table>
                 <a
-                  [routerLink]="['/metodopago','create']"
+                  [routerLink]="['/metodoenvio','create']"
                   class="btn btn-info btn-sm mr-2"
                 >
-                  CrearMetodoPago
+                  CrearMetodoEnvio
                 </a>
             </div>
         </div>

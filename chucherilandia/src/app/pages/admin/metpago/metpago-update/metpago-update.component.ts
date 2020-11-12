@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Metodopago } from '../../../../models/metodopago.model';
-import { MetodopagoService } from '../../../../services/metodopago.service';
+import { Metodopago } from '../../../../models//metodopago/metodopago.model';
+import { MetodopagoService } from '../../../../services/metodopago/metodopago.service';
 
 @Component({
   selector: 'app-metpago-update',

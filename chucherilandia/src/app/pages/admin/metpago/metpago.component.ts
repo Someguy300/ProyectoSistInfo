@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MetodopagoService } from '../../../services/metodopago.service';
-import { Metodopago } from '../../../models/metodopago.model';
+import { MetodopagoService } from '../../../services/metodopago/metodopago.service';
+import { Metodopago } from '../../../models/metodopago/metodopago.model'
 
 @Component({
   selector: 'app-metpago',

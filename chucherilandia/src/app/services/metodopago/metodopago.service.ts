@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Metodopago } from '../models/metodopago.model'
+import { Metodopago } from '../../models/metodopago/metodopago.model'
 import {
   Action,
   AngularFirestore,
