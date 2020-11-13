@@ -9,6 +9,7 @@ import { MetpagoUpdateComponent } from './pages/admin/metpago/metpago-update/met
 import { MetenvioComponent } from './pages/admin/metenvio/metenvio.component';
 import { MetenvioCreateComponent } from './pages/admin/metenvio/metenvio-create/metenvio-create/metenvio-create.component';
 import { MetenvioUpdateComponent } from './pages/admin/metenvio/metenvio-update/metenvio-update/metenvio-update.component';
+import { MessageListComponent } from '../app/pages/admin/message-list/message-list.component';
 
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'metodosenvio', canActivate: [AuthenticationGuard],component: MetenvioComponent },
   { path: 'metodoenvio/create',canActivate: [AuthenticationGuard], component: MetenvioCreateComponent},
   { path: 'metodoenvio/:id/update',canActivate: [AuthenticationGuard], component: MetenvioUpdateComponent},
+  { path: 'admin/message-list',canActivate: [AuthenticationGuard], component: MessageListComponent},
 
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
