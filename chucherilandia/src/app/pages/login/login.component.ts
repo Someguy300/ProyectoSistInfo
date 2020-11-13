@@ -23,6 +23,15 @@ export class LoginComponent implements OnInit {
     this.createForm();
   }
 
+  visibilidad(selector, visible) {
+    var elemento = document.querySelector(selector);
+    console.log(elemento);
+    if (elemento != null) {
+      elemento.style.display = visible?'block':'none';
+    } 
+    setTimeout(() => { elemento.style.display = 'none'; }, 3000);
+  }
+
   createForm(): void {
     this.loginForm = this.fb.group({
       email: '',
@@ -38,7 +47,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/tasks']);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => this.visibilidad('#alerta', true));
   }
 
   onSubmit(): void {
@@ -51,6 +60,6 @@ export class LoginComponent implements OnInit {
       .then(() => {
         this.router.navigate(['/']);
       })
-      .catch((err) => console.log('error!', err));
+      .catch((err) => this.visibilidad('#alerta', true));
   }
 }

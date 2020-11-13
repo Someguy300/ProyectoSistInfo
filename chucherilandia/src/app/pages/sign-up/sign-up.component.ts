@@ -21,6 +21,15 @@ export class SignUpComponent implements OnInit {
     this.createForm();
   }
 
+  visibilidad(selector, visible) {
+    var elemento = document.querySelector(selector);
+    console.log(elemento);
+    if (elemento != null) {
+      elemento.style.display = visible?'block':'none';
+    } 
+    setTimeout(() => { elemento.style.display = 'none'; }, 3000);
+  }
+
   createForm(): void {
     this.signupForm = this.fb.group({
       email: '',
@@ -36,7 +45,7 @@ export class SignUpComponent implements OnInit {
           this.router.navigate(['/tasks']);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => this.visibilidad('#alerta', true));
   }
 
   onSubmit(): void {
@@ -49,6 +58,6 @@ export class SignUpComponent implements OnInit {
       .then(() => {
         this.router.navigate(['/tasks']);
       })
-      .catch((err) => console.log('error!', err));
+      .catch((err) => this.visibilidad('#alerta', true));
   }
 }
