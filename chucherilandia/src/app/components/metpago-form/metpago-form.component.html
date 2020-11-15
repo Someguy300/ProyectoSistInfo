@@ -1,18 +1,18 @@
 <div class="container" *ngIf="!loading">
-    <h1>{{ editMetodopago ? "Update Metodo Pago" : "Create Metodo Pago" }}</h1>
-  
-    <form [formGroup]="metodopagoForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="titleTask">Inserta nombre del metodo de pago</label>
-        <input
-          type="text"
-          class="form-control"
-          id="titleTask"
-          formControlName="nombre"
-        />
-      </div>
-      <button type="submit" class="btn btn-primary">
-        Submit
+    <h1>{{ editMetodopago ? "Actualizar un Metodo Pago" : "Crear un nuevo Metodo Pago" }}</h1>
+    <hr>
+    <div>
+        <form [formGroup]="metodopagoForm" (ngSubmit)="onSubmit()">
+            <label>Nombre del Metodo de Pago</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Metodo de pago</span>
+                </div>
+                <input type="text" class="form-control" formControlName="nombre">
+            </div>
+            <button type="submit" class="btn btn-primary">
+        Aceptar
       </button>
-    </form>
-  </div>
+        </form>
+    </div>
+</div>

@@ -1,19 +1,16 @@
 <div class="container" *ngIf="!loading">
-    <h1>{{ editMetodoenvio ? "Update Metodo Envio" : "Create Metodo Envio" }}</h1>
-  
+    <h1>{{ editMetodoenvio ? "Actualizar metodo de envió" : "Crear un nuevo metodo envió" }}</h1>
+
     <form [formGroup]="metodoenvioForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="titleTask">Inserta nombre del metodo de envio</label>
-        <input
-          type="text"
-          class="form-control"
-          id="titleTask"
-          formControlName="nombre"
-        />
-      </div>
-      <button type="submit" class="btn btn-primary">
-        Submit
+        <label>Nombre del Metodo de envió</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Metodo de envió</span>
+            </div>
+            <input type="text" class="form-control" formControlName="nombre">
+        </div>
+        <button type="submit" class="btn btn-primary">
+        Aceptar
       </button>
     </form>
-  </div>
-
+</div>

@@ -5,30 +5,32 @@
                 <h1>Lista de Mensajes</h1>
                 <hr>
                 <p class="lead">Mensajes enviados por los clientes desde el formulario de contacto</p>
-                <table class="table table-striped">
-                    <thead class="">
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellido</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Mensaje</th>
-                            <th scope="col"> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let contact of contacts">
-                            <td>{{ contact.nombre }}</td>
-                            <td>{{ contact.apellido }}</td>
-                            <td>{{ contact.email }}</td>
-                            <td>{{ contact.mensaje }}</td>
-                            <td>
-                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteContact(contact.$key)" [disabled]="loading">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="">
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Mensaje</th>
+                                <th scope="col"> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let contact of contacts">
+                                <td>{{ contact.nombre }}</td>
+                                <td>{{ contact.apellido }}</td>
+                                <td>{{ contact.email }}</td>
+                                <td>{{ contact.mensaje }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm" (click)="deleteContact(contact.$key)" [disabled]="loading">
                                     <i class="fas fa-trash-alt"></i>
                           </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
