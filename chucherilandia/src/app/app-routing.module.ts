@@ -10,6 +10,8 @@ import { MetenvioComponent } from './pages/admin/metenvio/metenvio.component';
 import { MetenvioCreateComponent } from './pages/admin/metenvio/metenvio-create/metenvio-create/metenvio-create.component';
 import { MetenvioUpdateComponent } from './pages/admin/metenvio/metenvio-update/metenvio-update/metenvio-update.component';
 import { MessageListComponent } from '../app/pages/admin/message-list/message-list.component';
+import { LoadProductComponent } from '../app/pages/admin/load-product/load-product.component';
+import { ProductListComponent } from '../app/pages/admin/product-list/product-list.component';
 
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -27,6 +29,8 @@ const routes: Routes = [
   { path: 'metodoenvio/create',canActivate: [AuthenticationGuard], component: MetenvioCreateComponent},
   { path: 'metodoenvio/:id/update',canActivate: [AuthenticationGuard], component: MetenvioUpdateComponent},
   { path: 'admin/message-list',canActivate: [AuthenticationGuard], component: MessageListComponent},
+  { path: 'admin/load-product',canActivate: [AuthenticationGuard], component: LoadProductComponent},
+  { path: 'admin/product-list',canActivate: [AuthenticationGuard], component: ProductListComponent},
 
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },

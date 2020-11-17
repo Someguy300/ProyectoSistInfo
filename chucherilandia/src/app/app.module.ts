@@ -31,6 +31,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { LoadProductComponent } from './pages/admin/load-product/load-product.component';
+import { ProductListComponent } from './pages/admin/product-list/product-list.component';
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     LoginComponent,
     SignUpComponent,
     MessageListComponent,
+    LoadProductComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,

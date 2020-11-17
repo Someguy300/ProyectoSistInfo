@@ -1,0 +1,56 @@
+<div class="container py-5 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <h1>Productos de la Tienda</h1>
+                <hr>
+
+
+                <div class="row">
+                    <div class="col-sm">
+                        <p class="lead">A continuación se visualizan todos productos de la tienda</p>
+                    </div>
+                    <div class="col-sm text-right">
+                        <a [routerLink]="['/admin/load-product']" class="btn btn-warning btm-sm mr-2">
+                            <i class="fas fa-plus"></i>  Crear un nuevo Producto
+                        </a>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+                    <input type="text" class="form-control" id="buscador" (keyup)="buscar()">
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table" id="myTable">
+                        <caption>Lista de productos</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Descripcion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of products">
+                                <td scope="row"><img src='{{ product.imageProduct }}' height="100px"></td>
+                                <td class="align-middle">{{ product.nombre }}</td>
+                                <td class="align-middle">{{ product.categoria }}</td>
+                                <td class="align-middle">{{ product.precio }}</td>
+                                <td class="align-middle">{{ product.descripcion }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

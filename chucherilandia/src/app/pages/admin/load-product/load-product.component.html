@@ -1,0 +1,78 @@
+<div class="container py-5 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <h1>Cargar un nuevo producto</h1>
+                <hr>
+                <p class="lead">Llenando el siguiente formulario puedes agregar productos a la tienda</p>
+                <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm.value)">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Nombre</span>
+                                </div>
+                                <input type="text" class="form-control" formControlName="nombre">
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Precio</span>
+                                </div>
+                                <input type="text" class="form-control" formControlName="precio">
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Categoria</span>
+                                </div>
+                                <select class="form-control" formControlName="categoria">
+                                <option value="Con azucar">Con azucar</option>
+                                <option value="Sin azucar">Sin azucar</option>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label>Descripción</label>
+                                <textarea formControlName="descripcion" class="form-control" rows="9"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm mt-3">
+                            <div class="form-group">
+                                <label>Imagen principal</label>
+                                <input type="file" class="form-control-file" formControlName="imagen" (change)="handleImage($event)">
+                            </div>
+                            <!--                             <div class="form-group">
+                                <label>Imagen adicional</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input">
+                                    <label class="custom-file-label">Seleccionar Archivo</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Imagen adicional</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input">
+                                    <label class="custom-file-label">Seleccionar Archivo</label>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-secondary">Volver</button>
+                        </div>
+                        <div class="col text-right">
+                            <button type="submit" class="btn btn-warning" style="width: 140px;">Aceptar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
