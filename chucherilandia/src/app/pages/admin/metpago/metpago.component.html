@@ -19,7 +19,7 @@
                     <table class="table table-striped">
                         <thead class="">
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col"></th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col"></th>
                                 <th scope="col"></th>
@@ -27,7 +27,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let metodopago of metodosdepago">
-                                <th scope="row">{{ metodopago.$key }}</th>
+                                <th scope="row" class="text-center"><i class="{{ metodopago.icono }}" style="font-size: 1.5rem;"></i></th>
                                 <td>{{ metodopago.nombre }}</td>
                                 <td class="text-right">
                                     <a [routerLink]="['/metodopago',metodopago.$key,'update']" class="btn btn-primary btn-sm mr-2">

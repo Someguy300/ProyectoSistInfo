@@ -9,6 +9,23 @@
             </div>
             <input type="text" class="form-control" formControlName="nombre">
         </div>
+        <div class="form-group">
+            <label>Icono</label>
+            <select class="form-control" formControlName="icono" (change)="cambioIcono($event.target.value)">
+              <option value="fas fa-truck">Camion</option>
+              <option value="fas fa-motorcycle">Moto</option>
+              <option value="fas fa-bicycle">Bicicleta</option>
+              <option value="fas fa-store">Local</option>
+              <option value="fas fa-road">Calle</option>
+            </select>
+        </div>
+        <div class="form-group text-center">
+            <div class="icono" id="fas fa-truck"><i class="fas fa-truck"></i></div>
+            <div class="icono" id="fas fa-motorcycle"><i class="fas fa-motorcycle"></i></div>
+            <div class="icono" id="fas fa-bicycle"><i class="fas fa-bicycle"></i></div>
+            <div class="icono" id="fas fa-store"><i class="fas fa-store"></i></div>
+            <div class="icono" id="fas fa-road"><i class="fas fa-road"></i></div>
+        </div>
         <button type="submit" class="btn btn-primary">
         Aceptar
       </button>

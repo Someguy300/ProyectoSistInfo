@@ -2,13 +2,30 @@
     <h1>{{ editMetodopago ? "Actualizar un Metodo Pago" : "Crear un nuevo Metodo Pago" }}</h1>
     <hr>
     <div>
-        <form [formGroup]="metodopagoForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="metodopagoForm" (ngSubmit)="onSubmit()" ng-app="myApp" ng-controller="myCtrl">
             <label>Nombre del Metodo de Pago</label>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Metodo de pago</span>
                 </div>
                 <input type="text" class="form-control" formControlName="nombre">
+            </div>
+            <div class="form-group">
+                <label>Icono</label>
+                <select class="form-control" formControlName="icono" (change)="cambioIcono($event.target.value)">
+                  <option value="fab fa-paypal">Paypal</option>
+                  <option value="fas fa-money-check-alt">Zelle</option>
+                  <option value="fas fa-money-bill-wave">Efectivo</option>
+                  <option value="far fa-money-bill-alt">Dolares</option>
+                  <option value="far fa-credit-card">Punto de venta</option>
+                </select>
+            </div>
+            <div class="form-group text-center">
+                <div class="icono" id="fab fa-paypal"><i class="fab fa-paypal"></i></div>
+                <div class="icono" id="fas fa-money-check-alt"><i class="fas fa-money-check-alt"></i></div>
+                <div class="icono" id="fas fa-money-bill-wave"><i class="fas fa-money-bill-wave"></i></div>
+                <div class="icono" id="far fa-money-bill-alt"><i class="far fa-money-bill-alt"></i></div>
+                <div class="icono" id="far fa-credit-card"><i class="far fa-credit-card"></i></div>
             </div>
             <button type="submit" class="btn btn-primary">
         Aceptar

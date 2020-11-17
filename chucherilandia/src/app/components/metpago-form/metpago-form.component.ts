@@ -48,6 +48,7 @@ export class MetpagoFormComponent implements OnInit {
 
           this.metodopagoForm.patchValue({
             nombre: this.editMetodopago.nombre,
+            icono: this.editMetodopago.icono,
           });
           this.loading = false;
         });
@@ -58,6 +59,7 @@ export class MetpagoFormComponent implements OnInit {
   createForm(): void {
     this.metodopagoForm = this.fb.group({
       nombre : [''],
+      icono : [''],
     });
   }
 
@@ -79,7 +81,8 @@ export class MetpagoFormComponent implements OnInit {
 
   onSubmit(): void {
     const dataMetpago: Metodopago = {
-      nombre: this.metodopagoForm.get('nombre').value
+      nombre: this.metodopagoForm.get('nombre').value,
+      icono: this.metodopagoForm.get('icono').value
     };
 
     if (this.editMetodopago) {
@@ -89,4 +92,14 @@ export class MetpagoFormComponent implements OnInit {
 
     this.createMetodopago(dataMetpago);
   }
+
+  cambioIcono(value: string){
+    document.getElementById("fab fa-paypal").style.display = "none";
+    document.getElementById("fas fa-money-check-alt").style.display = "none";
+    document.getElementById("fas fa-money-bill-wave").style.display = "none";
+    document.getElementById("far fa-money-bill-alt").style.display = "none";
+    document.getElementById("far fa-credit-card").style.display = "none";
+    document.getElementById(value).style.display = "block";
+  }
+  
 }

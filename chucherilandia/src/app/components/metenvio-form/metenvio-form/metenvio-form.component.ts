@@ -48,6 +48,7 @@ export class MetenvioFormComponent implements OnInit {
 
           this.metodoenvioForm.patchValue({
             nombre: this.editMetodoenvio.nombre,
+            icono: this.editMetodoenvio.icono,
           });
           this.loading = false;
         });
@@ -58,6 +59,7 @@ export class MetenvioFormComponent implements OnInit {
   createForm(): void {
     this.metodoenvioForm = this.fb.group({
       nombre : [''],
+      icono : [''],
     });
   }
 
@@ -79,7 +81,8 @@ export class MetenvioFormComponent implements OnInit {
 
   onSubmit(): void {
     const dataMetpago: Metodoenvio = {
-      nombre: this.metodoenvioForm.get('nombre').value
+      nombre: this.metodoenvioForm.get('nombre').value,
+      icono: this.metodoenvioForm.get('icono').value,
     };
 
     if (this.editMetodoenvio) {
@@ -88,6 +91,15 @@ export class MetenvioFormComponent implements OnInit {
     }
 
     this.createMetodopago(dataMetpago);
+  }
+
+  cambioIcono(value: string){
+    document.getElementById("fas fa-truck").style.display = "none";
+    document.getElementById("fas fa-motorcycle").style.display = "none";
+    document.getElementById("fas fa-bicycle").style.display = "none";
+    document.getElementById("fas fa-store").style.display = "none";
+    document.getElementById("fas fa-road").style.display = "none";
+    document.getElementById(value).style.display = "block";
   }
 
 }
