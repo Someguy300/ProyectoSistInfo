@@ -17,6 +17,12 @@ import { MetenvioComponent } from './pages/admin/metenvio/metenvio.component';
 import { MetenvioCreateComponent } from './pages/admin/metenvio/metenvio-create/metenvio-create/metenvio-create.component';
 import { MetenvioFormComponent } from './components/metenvio-form/metenvio-form/metenvio-form.component';
 import { MetenvioUpdateComponent } from './pages/admin/metenvio/metenvio-update/metenvio-update/metenvio-update.component';
+
+import { CategoriaComponent } from './pages/admin/categoria/categoria.component';
+import { CategoriaCreateComponent } from './pages/admin/categoria/categoria-create/categoria-create.component';
+import { CategoriaFormComponent } from './components/categoria-form/categoria-form.component';
+import { CategoriaUpdateComponent } from './pages/admin/categoria/categoria-update/categoria-update.component';
+
 import { MessageListComponent } from './pages/admin/message-list/message-list.component';
 
 // Firebase Imports
@@ -31,6 +37,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+
 
 
 @NgModule({
@@ -52,6 +59,10 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     LoginComponent,
     SignUpComponent,
     MessageListComponent,
+    CategoriaCreateComponent,
+    CategoriaFormComponent,
+    CategoriaUpdateComponent,
+    CategoriaComponent,
   ],
   imports: [
     BrowserModule,

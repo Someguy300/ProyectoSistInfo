@@ -1,0 +1,16 @@
+<div class="container" *ngIf="!loading">
+    <h1>{{ editCategoria ? "Actualizar categoria" : "Crear un nuevo metodo categoria" }}</h1>
+
+    <form [formGroup]="categoriaForm" (ngSubmit)="onSubmit()">
+        <label>Nombre de la categoria</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Categoria</span>
+            </div>
+            <input type="text" class="form-control" formControlName="nombre">
+        </div>
+        <button type="submit" class="btn btn-primary">
+        Aceptar
+      </button>
+    </form>
+</div>

@@ -9,6 +9,11 @@ import { MetpagoUpdateComponent } from './pages/admin/metpago/metpago-update/met
 import { MetenvioComponent } from './pages/admin/metenvio/metenvio.component';
 import { MetenvioCreateComponent } from './pages/admin/metenvio/metenvio-create/metenvio-create/metenvio-create.component';
 import { MetenvioUpdateComponent } from './pages/admin/metenvio/metenvio-update/metenvio-update/metenvio-update.component';
+
+import { CategoriaComponent } from './pages/admin/categoria/categoria.component';
+import { CategoriaCreateComponent } from './pages/admin/categoria/categoria-create/categoria-create.component';
+import { CategoriaUpdateComponent } from './pages/admin/categoria/categoria-update/categoria-update.component';
+
 import { MessageListComponent } from '../app/pages/admin/message-list/message-list.component';
 
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
@@ -26,6 +31,9 @@ const routes: Routes = [
   { path: 'metodosenvio', canActivate: [AuthenticationGuard],component: MetenvioComponent },
   { path: 'metodoenvio/create',canActivate: [AuthenticationGuard], component: MetenvioCreateComponent},
   { path: 'metodoenvio/:id/update',canActivate: [AuthenticationGuard], component: MetenvioUpdateComponent},
+  { path: 'categorias', canActivate: [AuthenticationGuard],component: CategoriaComponent },
+  { path: 'categoria/create',canActivate: [AuthenticationGuard], component: CategoriaCreateComponent},
+  { path: 'categoria/:id/update',canActivate: [AuthenticationGuard], component: CategoriaUpdateComponent},
   { path: 'admin/message-list',canActivate: [AuthenticationGuard], component: MessageListComponent},
 
   { path: 'login', component: LoginComponent },
