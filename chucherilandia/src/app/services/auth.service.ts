@@ -2,12 +2,25 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth, User } from 'firebase';
 import { Observable } from 'rxjs';
-
+import { Cuenta } from '../models/cuenta';
+import {
+  Action,
+  AngularFirestore,
+  AngularFirestoreCollection,
+  DocumentChangeAction,
+  DocumentReference,
+  DocumentSnapshot,
+} from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth) {}
+
+  private cuentaCollection: AngularFirestoreCollection<Cuenta>;
+
+  constructor(private afAuth: AngularFireAuth, private db: AngularFirestore) {
+    this.cuentaCollection = this.db.collection<Cuenta>('cuentas');
+  }
 
   /**
    * METHOD TO LOGIN USING GOOGLE ACCOUNT
@@ -91,4 +104,15 @@ export class AuthService {
   private authLogin(provider: auth.AuthProvider): Promise<auth.UserCredential> {
     return this.afAuth.signInWithPopup(provider);
   }
+
+  getCuentaTipo(id: string): Observable<Action<DocumentSnapshot<Cuenta>>> {
+    return this.cuentaCollection.doc<Cuenta>(id).snapshotChanges();
+  }
+
+  
+  createCuenta(newcuenta: Cuenta): any {
+    return this.cuentaCollection.doc(newcuenta.$key).set({tipo: newcuenta.tipo});
+  }
+  
+
 }
