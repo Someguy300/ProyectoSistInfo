@@ -113,6 +113,17 @@ export class AuthService {
   createCuenta(newcuenta: Cuenta): any {
     return this.cuentaCollection.doc(newcuenta.$key).set({tipo: newcuenta.tipo});
   }
-  
+
+  isAdmin():boolean{
+    this.getCurrentUser().subscribe((response) => {
+      this.getCuentaTipo(auth().currentUser.uid).subscribe((items) => {
+        console.log(items.payload.data().tipo);
+        if(items.payload.data().tipo=="admin"){
+          return true;
+        }
+      });
+    });
+    return false;
+  }
 
 }
