@@ -54,4 +54,8 @@ export class ProductService {
   }
 
 
+  deleteProduct(docId: string): Promise<void> {
+    return this.productsCollection.doc<Product>(docId).delete();
+  }
+
 }

@@ -32,6 +32,12 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  deleteProducto(id: string): void {
+    this.loading = true;
+    this.productService.deleteProduct(id).then((res) => {
+      this.loading = false;
+    });
+  }
 
   buscar() {
     var input, filter, table, tr, td, i, txtValue;
