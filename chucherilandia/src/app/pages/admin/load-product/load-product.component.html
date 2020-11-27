@@ -29,8 +29,7 @@
                                     <span class="input-group-text">Categoria</span>
                                 </div>
                                 <select class="form-control" formControlName="categoria">
-                                <option value="Con azucar">Con azucar</option>
-                                <option value="Sin azucar">Sin azucar</option>
+                                <option *ngFor="let category of categorys" value="{{ category.nombre }}">{{ category.nombre }}</option>
                               </select>
                             </div>
                         </div>
