@@ -30,7 +30,6 @@ export class LoadProductComponent implements OnInit {
 
   getAllCategorys(): void {
     this.categoryService.getAllCategorys().subscribe((items) => {
-      // Setting up categorys
       this.categorys = items.map(
         (item) =>
           ({
@@ -41,11 +40,11 @@ export class LoadProductComponent implements OnInit {
     });
   }
 
-  onSubmit(data: Product) {
+/*   onSubmit(data: Product) {
     console.log('New product', data);
     this.productService.uploadImage(data, this.image);
     this.router.navigate(['admin/product-list']);
-  }
+  } */
 
   createForm(): void {
     this.productForm = this.fb.group({

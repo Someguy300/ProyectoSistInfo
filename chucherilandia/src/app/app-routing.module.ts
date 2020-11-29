@@ -19,6 +19,7 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { ListCategoryComponent } from './pages/admin/category/list-category/list-category.component';
 import { CreateCategoryComponent } from './pages/admin/category/create-category/create-category.component';
 import { UpdateCategoryComponent } from './pages/admin/category/update-category/update-category.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 
 const routes: Routes = [
@@ -36,8 +37,9 @@ const routes: Routes = [
   { path: 'categoria/create',canActivate: [AuthenticationGuard], component: CreateCategoryComponent},
   { path: 'categoria/:categoryId/update',canActivate: [AuthenticationGuard], component: UpdateCategoryComponent},
   { path: 'admin/message-list',canActivate: [AuthenticationGuard], component: MessageListComponent},
-  { path: 'admin/load-product',canActivate: [AuthenticationGuard], component: LoadProductComponent},
+  { path: 'admin/load-product',canActivate: [AuthenticationGuard], component: ProductFormComponent},
   { path: 'admin/product-list',canActivate: [AuthenticationGuard], component: ProductListComponent},
+  { path: 'product/:productId/update',canActivate: [AuthenticationGuard], component: ProductFormComponent},
  
 
   { path: 'login', component: LoginComponent },

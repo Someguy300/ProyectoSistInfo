@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { FileI } from '../models/file-i';
 import { Product } from '../models/product';
 import { map, finalize } from 'rxjs/operators';
-import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction, DocumentReference } from '@angular/fire/firestore';
+import { Action, AngularFirestore, AngularFirestoreCollection, DocumentChangeAction, DocumentReference, DocumentSnapshot } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,11 @@ export class ProductService {
       imageProduct: this.downloadURL,
       fileRef: this.filePath,
     };
-    return this.productsCollection.add(productObj);
+    if (product.$key) {
+      return this.productsCollection.doc(product.$key).update(productObj);
+    } else {
+      return this.productsCollection.add(productObj);
+    }
   }
 
   uploadImage(product: Product, image: FileI) {
@@ -52,10 +56,24 @@ export class ProductService {
         })
       ).subscribe();
   }
+  
 
 
   deleteProduct(docId: string): Promise<void> {
     return this.productsCollection.doc<Product>(docId).delete();
+  }
+
+  getProduct(productId: string): Observable<Action<DocumentSnapshot<Product>>> {
+    return this.productsCollection.doc<Product>(productId).snapshotChanges();
+  }
+
+  /**
+   * UPDATE SELECTED TASK
+   * @param data
+   * @param docId
+   */
+  updateProduct(data: Product, docId: string): Promise<void> {
+    return this.productsCollection.doc<Product>(docId).update(data);
   }
 
 }
