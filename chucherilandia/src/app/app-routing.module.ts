@@ -16,6 +16,7 @@ import { ProductListComponent } from '../app/pages/admin/product-list/product-li
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
+import { AdminGuard } from './guards/admin.guard';
 import { ListCategoryComponent } from './pages/admin/category/list-category/list-category.component';
 import { CreateCategoryComponent } from './pages/admin/category/create-category/create-category.component';
 import { UpdateCategoryComponent } from './pages/admin/category/update-category/update-category.component';
@@ -27,18 +28,18 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
 
-  { path: 'metodospago',  canActivate: [AuthenticationGuard], component: MetpagoComponent },
-  { path: 'metodopago/create', canActivate: [AuthenticationGuard],component: MetpagoCreateComponent},
-  { path: 'metodopago/:id/update',canActivate: [AuthenticationGuard], component: MetpagoUpdateComponent},
-  { path: 'metodosenvio', canActivate: [AuthenticationGuard],component: MetenvioComponent },
-  { path: 'metodoenvio/create',canActivate: [AuthenticationGuard], component: MetenvioCreateComponent},
-  { path: 'metodoenvio/:id/update',canActivate: [AuthenticationGuard], component: MetenvioUpdateComponent},
-  { path: 'categoria', canActivate: [AuthenticationGuard],component: ListCategoryComponent },
-  { path: 'categoria/create',canActivate: [AuthenticationGuard], component: CreateCategoryComponent},
-  { path: 'categoria/:categoryId/update',canActivate: [AuthenticationGuard], component: UpdateCategoryComponent},
-  { path: 'admin/message-list',canActivate: [AuthenticationGuard], component: MessageListComponent},
-  { path: 'admin/load-product',canActivate: [AuthenticationGuard], component: ProductFormComponent},
-  { path: 'admin/product-list',canActivate: [AuthenticationGuard], component: ProductListComponent},
+  { path: 'metodospago',  canActivate: [AdminGuard], component: MetpagoComponent },
+  { path: 'metodopago/create', canActivate: [AdminGuard],component: MetpagoCreateComponent},
+  { path: 'metodopago/:id/update',canActivate: [AdminGuard], component: MetpagoUpdateComponent},
+  { path: 'metodosenvio', canActivate: [AdminGuard],component: MetenvioComponent },
+  { path: 'metodoenvio/create',canActivate: [AdminGuard], component: MetenvioCreateComponent},
+  { path: 'metodoenvio/:id/update',canActivate: [AdminGuard], component: MetenvioUpdateComponent},
+  { path: 'categoria', canActivate: [AdminGuard],component: ListCategoryComponent },
+  { path: 'categoria/create',canActivate: [AdminGuard], component: CreateCategoryComponent},
+  { path: 'categoria/:categoryId/update',canActivate: [AdminGuard], component: UpdateCategoryComponent},
+  { path: 'admin/message-list',canActivate: [AdminGuard], component: MessageListComponent},
+  { path: 'admin/load-product',canActivate: [AdminGuard], component: LoadProductComponent},
+  { path: 'admin/product-list',canActivate: [AdminGuard], component: ProductListComponent},
   { path: 'product/:productId/update',canActivate: [AuthenticationGuard], component: ProductFormComponent},
  
 
