@@ -38,6 +38,7 @@ import { UpdateCategoryComponent } from './pages/admin/category/update-category/
 import { CategoryFormComponent } from './components/category-form/category-form.component';
 import { ListCategoryComponent } from './pages/admin/category/list-category/list-category.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
+import { StoreComponent } from './pages/store/store.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
     CategoryFormComponent,
     ListCategoryComponent,
     ProductFormComponent,
+    StoreComponent,
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,7 @@ import { ListCategoryComponent } from './pages/admin/category/list-category/list
 import { CreateCategoryComponent } from './pages/admin/category/create-category/create-category.component';
 import { UpdateCategoryComponent } from './pages/admin/category/update-category/update-category.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
+import { StoreComponent } from './pages/store/store.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'admin/load-product',canActivate: [AdminGuard], component: LoadProductComponent},
   { path: 'admin/product-list',canActivate: [AdminGuard], component: ProductListComponent},
   { path: 'product/:productId/update',canActivate: [AuthenticationGuard], component: ProductFormComponent},
+  { path: 'store',canActivate: [AuthenticationGuard], component: StoreComponent},
  
 
   { path: 'login', component: LoginComponent },
