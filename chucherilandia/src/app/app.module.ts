@@ -39,6 +39,7 @@ import { CategoryFormComponent } from './components/category-form/category-form.
 import { ListCategoryComponent } from './pages/admin/category/list-category/list-category.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { StoreComponent } from './pages/store/store.component';
+import { AddCarComponent } from './pages/add-car/add-car.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { StoreComponent } from './pages/store/store.component';
     ListCategoryComponent,
     ProductFormComponent,
     StoreComponent,
+    AddCarComponent,
   ],
   imports: [
     BrowserModule,

@@ -57,7 +57,7 @@
                                 <td class="align-middle">{{ product.categoria }}</td>
                                 <td class="align-middle">{{ product.precio }}</td>
                                 <td class="align-middle">{{ product.descripcion }}</td>
-                                <td class="align-middle"><button type="button" [routerLink]="['car', product.$key, 'add']" class="btn btn-warning text-center" [disabled]="loading">
+                                <td class="align-middle"><button type="button" [routerLink]="['/car', product.$key, 'add']" class="btn btn-warning text-center" [disabled]="loading">
                                     <i class="fas fa-cart-plus" style="font-size: 2rem;"></i>  Agregar al carrito
                         </button></td>
                             </tr>
