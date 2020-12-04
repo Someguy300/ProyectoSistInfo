@@ -1,0 +1,37 @@
+/* Ocultar todos los pasos por defecto */
+
+.tab {
+    display: none;
+}
+
+
+/* Haz círculos que indiquen los pasos del formulario. */
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+
+/* Marque los pasos que están terminados y son válidos: */
+
+.step.finish {
+    background-color: #4CAF50;
+}
+
+.porciento {
+    height: 100px;
+    width: 150px;
+    margin-top: 1rem;
+    //background: linear-gradient(to top, #ffc107 50%, #ffffff 50%);
+}

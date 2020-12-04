@@ -1,0 +1,183 @@
+<div class="container py-5 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <h1>Proceso de llenado de Bolsa</h1>
+                <hr>
+                <div class="row">
+                    <div class="col-sm">
+                        <p class="lead">Por favor, siga el proceso de llenado del bolsa</p>
+                    </div>
+                    <div class="col-sm text-right d-none d-sm-none d-md-block">
+                        <p style="color:grey">Paso {{currentTab}} de 4</p>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+
+                    <form>
+                        <div id="inicial" class="tab">
+                            <h3 class="mt-3rem">¡Usted esta por abrir una bolsa de golosinas!</h3>
+                            <p style="text-align: center!important;
+                                                        margin-bottom: 3rem;
+                            color: grey;">Es necesario abrir una bolsa para continuar</p>
+                            <div class="row">
+                                <div class="col-sm text-right">
+                                    <img src="../../../../assets/images/bolsa.png" width="175" height="120">
+                                </div>
+                                <div class="col-sm" *ngIf="!loading">
+                                    <h5>Detalles:</h5>
+                                    <p><b>Precio:</b> Bs. {{selectedProduct.precio }}</p>
+                                    <small class="text-muted">Usted podra agregar otros dulces que tengan el mismo precio.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="primerProducto" class="tab">
+                            <h3 class="mt-3rem">¡Agregando su primer producto a la bolsa!</h3>
+                            <p style="text-align: center!important;
+                            margin-bottom: 3rem;
+color: grey;">Esta es la golosina que habias seleccionado</p>
+                            <div class="row" *ngIf="!loading">
+                                <div class="col-sm">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm">
+                                                    <img class="card-img-top" src='{{ selectedProduct.imageProduct }}'>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="col-sm">
+                                        <h5 class="card-title">{{ selectedProduct.nombre }}</h5>
+                                    </div>
+                                    <div class="col-sm">
+                                        <p class="card-text"><b>Categoria: </b>{{ selectedProduct.categoria }}</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <p class="card-text"><b>Precio: </b>Bs. {{ selectedProduct.precio }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-center" style="width: 100%;">
+                                        <div class='porciento' id="porciento"><img src="../../../../assets/images/bolsa.png" width="150" height="100"></div>
+                                    </div>
+                                    <div class="col-sm text-center">
+                                        <br>¿Cuantos gramos desea?
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-danger btn-number" (click)="menos()">
+                                                    <i class="fas fa-minus"></i>
+                                            </button>
+                                            </span>
+                                            <input type="text" class="form-control input-number" [(ngModel)]="value" name="something" (change)="control()">
+                                            <span class=" input-group-btn ">
+                                                <button type="button " class="btn btn-success btn-number " (click)="mas() ">
+                                                    <i class="fas fa-plus "></i>
+                                            </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab ">Birthday:
+
+                        </div>
+                        <div class="tab ">Login Info:
+
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-sm">
+                                <button type="button" style="width: 100%;" class="btn btn-secondary mb-2" id="prevBtn " (click)="anterior() ">Volver</button>
+                            </div>
+                            <div class="col-sm">
+                                <button type="button" style="width: 100%;" class="btn btn-warning" id="nextBtn " (click)="siguiente() ">Siguiente</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    $('.btn-number').click(function(e) {
+        e.preventDefault();
+
+        fieldName = $(this).attr('data-field');
+        type = $(this).attr('data-type');
+        var input = $("input[name='" + fieldName + "' ] ");
+        var currentVal = parseInt(input.val());
+        if (!isNaN(currentVal)) {
+            if (type == 'minus') {
+
+                if (currentVal > input.attr('min')) {
+                    input.val(currentVal - 1).change();
+                }
+                if (parseInt(input.val()) == input.attr('min')) {
+                    $(this).attr('disabled', true);
+                }
+
+            } else if (type == 'plus') {
+
+                if (currentVal < input.attr('max')) {
+                    input.val(currentVal + 1).change();
+                }
+                if (parseInt(input.val()) == input.attr('max')) {
+                    $(this).attr('disabled', true);
+                }
+
+            }
+        } else {
+            input.val(0);
+        }
+    });
+    $('.input-number').focusin(function() {
+        $(this).data('oldValue', $(this).val());
+    });
+    $('.input-number').change(function() {
+
+        minValue = parseInt($(this).attr('min'));
+        maxValue = parseInt($(this).attr('max'));
+        valueCurrent = parseInt($(this).val());
+
+        name = $(this).attr('name');
+        if (valueCurrent >= minValue) {
+            $(".btn-number[data-type='minus' ][data-field='" + name + "' ] ").removeAttr('disabled')
+        } else {
+            alert('Sorry, the minimum value was reached');
+            $(this).val($(this).data('oldValue'));
+        }
+        if (valueCurrent <= maxValue) {
+            $(".btn-number[data-type='plus' ][data-field='" + name + "' ] ").removeAttr('disabled')
+        } else {
+            alert('Sorry, the maximum value was reached');
+            $(this).val($(this).data('oldValue'));
+        }
+
+
+    });
+    $(".input-number ").keydown(function(e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+            // Allow: Ctrl+A
+            (e.keyCode == 65 && e.ctrlKey === true) ||
+            // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+            // let it happen, don't do anything
+            return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+</script>
