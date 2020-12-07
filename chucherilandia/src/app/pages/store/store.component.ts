@@ -14,11 +14,12 @@ export class StoreComponent implements OnInit {
   loading = false;
   categorys: Array<Category> = [];
 
-  constructor( private productService: ProductService, private categoryService: CategoryService ) { }
+  constructor( private productService: ProductService, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.getAllProductsList()
     this.getAllCategorys()
+    
   }
 
   getAllProductsList(): void {
@@ -62,6 +63,8 @@ export class StoreComponent implements OnInit {
     }
 }
 
+
+
 buscarCategoria() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("buscadorCategoria");
@@ -97,5 +100,7 @@ getAllCategorys(): void {
     this.loading = false;
   });
 }
+
+  
 
 }
