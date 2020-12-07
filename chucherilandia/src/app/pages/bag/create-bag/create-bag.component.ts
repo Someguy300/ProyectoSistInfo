@@ -92,9 +92,13 @@ export class CreateBagComponent implements OnInit {
   }
 
   siguiente() {
-    this.currentTab++;
-    this.hideTabs()
-    this.showTab()
+    if(this.currentTab != 4){
+      this.currentTab++;
+      this.hideTabs()
+      this.showTab()
+    }else{
+      this.router.navigate(['store']);
+    }
   }
 
   volverEmpezar() {
@@ -265,7 +269,7 @@ export class CreateBagComponent implements OnInit {
   }
 
   saveBag() {
-    console.log("GUARDANDO BOLSA EN FIREBASE" , this.bolsa)
+    console.log("GUARDANDO BOLSA EN FIREBASE", this.bolsa)
     this.bagService.createBag(this.bolsa)
   }
 
