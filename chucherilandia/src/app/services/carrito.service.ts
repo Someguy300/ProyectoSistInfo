@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Carrito } from '../models/carrito';
+import { auth, User } from 'firebase';
 import {
   Action,
   AngularFirestore,
@@ -20,10 +21,6 @@ export class CarritoService {
 
   private carroCollection: AngularFirestoreCollection<Carrito>;
 
-  prodRef: ProdRef;
-  auxNewBolsa: Bolsa;
-  bolsasEqPrice: boolean;
-
   constructor(private db: AngularFirestore) { 
     this.carroCollection = this.db.collection<Carrito>('carritos');
   }
@@ -39,25 +36,7 @@ export class CarritoService {
       coste: 0});
   }
 
-  addToCart(data: Carrito, id: string, prod:Product, qty:number): Promise<void> {
-    this.reset();
-    this.prodRef.cantidad = qty;
-    this.prodRef.precio = qty*prod.precio;
-    this.prodRef.prodId = prod.$key;
-    for(let bolsa of data.bolsas){
-      if(bolsa.setPrecio==prod.precio){
-        this.bolsasEqPrice = true;
-        bolsa.contenido.push(this.prodRef);
-      }
-    }
-    if(!this.bolsasEqPrice){
-      this.auxNewBolsa.setPrecio = prod.precio;
-      this.auxNewBolsa.coste = this.prodRef.precio;
-      this.auxNewBolsa.contenido.push(this.prodRef)
-      data.bolsas.push(this.auxNewBolsa);
-    }
-    return this.carroCollection.doc<Carrito>(id).update(data);
-  }
+  
 
 
   emptyCart(data: Carrito, id: string) {
@@ -66,8 +45,5 @@ export class CarritoService {
     return this.carroCollection.doc<Carrito>(id).update(data);
   }
 
-  reset(){
-    this.bolsasEqPrice= false;
-  }
 
 }

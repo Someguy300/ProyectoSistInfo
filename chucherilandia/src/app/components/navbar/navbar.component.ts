@@ -45,7 +45,10 @@ export class NavbarComponent implements OnInit {
             this.tipo = items.payload.data().tipo;
           }
           if(this.tipo=='usuario')this.isUser=true;
-          else if(this.tipo=='admin')this.isAdmin=true;
+          else if(this.tipo=='admin'){
+            this.authService.isAdmin = true;
+            this.isAdmin=true;
+          }
         });
         return;
       }
@@ -64,6 +67,7 @@ export class NavbarComponent implements OnInit {
 
   reset():void{
     this.tipo=null;
+    this.authService.isAdmin = false;
     this.isUser=false;
     this.isAdmin=false;
   }
