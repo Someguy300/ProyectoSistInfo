@@ -8,6 +8,7 @@ import { Category } from 'src/app/models/category';
 import { ProdRef } from 'src/app/models/prod-ref';
 import { Product } from 'src/app/models/product';
 import { AuthService } from 'src/app/services/auth.service';
+import { BagService } from 'src/app/services/bag.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -42,6 +43,7 @@ export class CreateBagComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private categoryService: CategoryService,
+    private bagService: BagService,
   ) { }
 
   ngOnInit(): void {
@@ -95,8 +97,11 @@ export class CreateBagComponent implements OnInit {
     this.showTab()
   }
 
-  anterior() {
-    this.currentTab--;
+  volverEmpezar() {
+    this.value = 0
+    this.currentTab = 1;
+    this.bolsa = { user: null, precioComun: 0, costoTotal: 0, pesoTotal: 0, contenido: [], };
+    this.calcularPorciento()
     this.hideTabs()
     this.showTab()
   }
@@ -104,8 +109,10 @@ export class CreateBagComponent implements OnInit {
 
   hideTabs() {
     this.visibilidad('#inicial', false)
-    this.visibilidad('#primerProducto', false)
+    this.visibilidad('#gramosProducto', false)
     this.visibilidad('#preguntar', false)
+    this.visibilidad('#finalizar', false)
+    this.visibilidad('#lista', false)
   }
 
   showTab() {
@@ -114,15 +121,16 @@ export class CreateBagComponent implements OnInit {
         this.visibilidad('#inicial', true)
         break;
       case 2:
-        this.visibilidad('#primerProducto', true)
+        this.visibilidad('#gramosProducto', true)
+        setTimeout(() => { this.calcularPorciento(); }, 250);
         break;
       case 3:
         this.visibilidad('#preguntar', true)
         this.Embolsar()
-        this.calcularPorciento()
         break;
       case 4:
         this.visibilidad('#finalizar', true)
+        this.saveBag()
         break;
       case 5:
         this.visibilidad('#lista', true)
@@ -131,6 +139,15 @@ export class CreateBagComponent implements OnInit {
       default:
       // code block
     }
+  }
+
+  otroProducto(product: Product) {
+    this.currentTab = 2
+    this.hideTabs()
+    this.showTab()
+    this.selectedProduct = product
+    this.loading = false
+    this.value = 0
   }
 
   agregarOtro() {
@@ -152,54 +169,75 @@ export class CreateBagComponent implements OnInit {
   }
 
   control() {
-    if (this.value > 2000) {
-      this.value = 2000
-    } else if (this.value < 0) {
-      this.value = 0
+    if (this.indiceBolsa == 0) {
+      if (this.value > 2000) {
+        this.value = 2000
+      } else if (this.value < 0) {
+        this.value = 0
+      }
+    } else {
+      if (this.value + this.bolsa.pesoTotal > 2000) {
+        this.value = 2000 - this.bolsa.pesoTotal
+      } else if (this.value < 0) {
+        this.value = 0
+      }
     }
+
     this.calcularPorciento()
   }
 
 
   Embolsar() {
-    if (this.indiceBolsa == 0) {//Primera Bolsa
-      var ProdRef: ProdRef = {
-        prodId: this.selectedProduct.$key,
-        cantidad: Number(this.value),
-        precio: Number(this.selectedProduct.precio),
-      };
+    var ProdRef: ProdRef = {
+      prodId: this.selectedProduct.$key,
+      cantidad: Number(this.value),
+    };
+    if (this.indiceBolsa == 0) {// Primer producto de la bolsa
       this.bolsa.user = this.user.email
       this.bolsa.precioComun = Number(this.selectedProduct.precio)
       this.bolsa.costoTotal = Number(this.value * this.selectedProduct.precio)
       this.bolsa.pesoTotal = Number(this.value)
       this.bolsa.contenido.push(ProdRef)
       this.precioDeLaBolsa = this.selectedProduct.precio
-    } else {
-
+      this.calcularPorciento()
+      this.indiceBolsa++
+    } else { // El resto de los productos
+      this.bolsa.costoTotal = Number(this.value * this.selectedProduct.precio)
+      this.bolsa.pesoTotal = Number(this.bolsa.pesoTotal + this.value)
+      this.bolsa.contenido.push(ProdRef)
+      this.calcularPorciento()
+      this.indiceBolsa++
     }
-
-    console.log("BOLSA", this.bolsa)
+    this.productFiltered.push(this.selectedProduct) // Evitar que se muestre el producto ya agregado en la proxima lista
+    console.log("BOLSA: ", this.bolsa)
   }
 
+
+
   calcularPorciento() {
-    var porciento = (this.value * 100) / 2000
-    this.porcientoPeso = porciento + '%'
-    document.getElementById('porciento').setAttribute("style", "background: linear-gradient(to top, #ffc107 " + this.porcientoPeso + ", #ffffff " + this.porcientoPeso);
-    document.getElementById('porcientoBolsa').setAttribute("style", "background: linear-gradient(to top, #ffc107 " + this.porcientoPeso + ", #ffffff " + this.porcientoPeso);
+    if (this.currentTab == 2) {
+      if (this.indiceBolsa == 0) {
+        var porciento = (this.value * 100) / 2000
+        this.porcientoPeso = porciento + '%'
+      } else {
+        var porciento = ((this.value + this.bolsa.pesoTotal) * 100) / 2000
+        this.porcientoPeso = porciento + '%'
+      }
+      document.getElementById('porciento').setAttribute("style", "background: linear-gradient(to top, #ffc107 " + this.porcientoPeso + ", #ffffff " + this.porcientoPeso);
+    } else {
+      var porciento = (this.bolsa.pesoTotal * 100) / 2000
+      this.porcientoPeso = porciento + '%'
+      document.getElementById('porcientoBolsa').setAttribute("style", "background: linear-gradient(to top, #ffc107 " + this.porcientoPeso + ", #ffffff " + this.porcientoPeso);
+    }
   }
 
 
   getAllProductsList(): void {
-    console.log("PRECIO DE LA BOLSA" , this.precioDeLaBolsa)
     this.loading = true;
-
-
-    console.log(this.products)
-    this.productFiltered=  []
-    console.log(this.productFiltered)
+    this.productFiltered = []
     this.productService.getAllProducts().subscribe((items) => {
 
-      var prod :any
+      var prod: any
       prod = items.map(
         (item) =>
           ({
@@ -207,31 +245,28 @@ export class CreateBagComponent implements OnInit {
             $key: item.payload.doc.id,
           } as Product)
       );
-this.products=prod
-console.log("EJECUTANDO FILTRADO")
-this.filtrado(this.products)
+      this.products = prod
+      this.filtrado(this.products)
     }
-   
-    
     );
- 
   }
 
 
-  filtrado(products)
-  {
-        
-    for (let producto of products){       
-      if(producto.precio == this.precioDeLaBolsa ){
-
-        if(!this.productFiltered.find(e => e.nombre === producto.nombre))
-        {
-
-          this.productFiltered.push(producto)
+  filtrado(products) {
+    for (let producto of products) {
+      if (producto.precio == this.precioDeLaBolsa) {
+        if (!this.productFiltered.find(e => e.nombre === producto.nombre)) {
+          if (!this.bolsa.contenido.find(aux => aux.prodId === producto.nombre)) { // cambiar la negacion para que no pueda agregar el mismo producto ya existentes en la bolsa
+            this.productFiltered.push(producto)
+          }
         }
-     
       }
     }
+  }
+
+  saveBag() {
+    console.log("GUARDANDO BOLSA EN FIREBASE" , this.bolsa)
+    this.bagService.createBag(this.bolsa)
   }
 
 }

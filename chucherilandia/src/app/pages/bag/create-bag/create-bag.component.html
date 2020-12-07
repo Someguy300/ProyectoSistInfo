@@ -32,8 +32,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="primerProducto" class="tab">
-                            <h3 class="mt-3rem">¡Agregando su primer producto a la bolsa!</h3>
+                        <div id="gramosProducto" class="tab">
+                            <h3 class="mt-3rem">¡Agregando su producto a la bolsa!</h3>
                             <p style="text-align: center!important;
                             margin-bottom: 3rem;
 color: grey;">Esta es la golosina que habias seleccionado</p>
@@ -91,7 +91,7 @@ color: grey;">Esta es la golosina que habias seleccionado</p>
                                 <div class='porciento' id="porcientoBolsa"><img src="../../../../assets/images/bolsa.png" width="150" height="100"></div>
                             </div>
                             <p style="color:grey">Capacidad de la bolsa</p>
-                            <button type="button" class="btn btn-warning btn-lg" (click)="agregarOtro()">
+                            <button type="button" class="btn btn-warning btn-lg" (click)="agregarOtro()" [disabled]="this.bolsa.pesoTotal >= 2000">
                                 <i class="fas fa-plus" style="font-size: 72px;"></i><br>
                                 ¡Si, deseo agregar otro porducto!
                             </button>
@@ -119,17 +119,26 @@ color: grey;">Esta es la golosina que habias seleccionado</p>
                                             <td class="align-middle">{{ product.nombre }}</td>
                                             <td class="align-middle">{{ product.categoria }}</td>
                                             <td class="align-middle">{{ product.precio }}</td>
-                                            <td class="align-middle"><button type="button" [routerLink]="['/bag', product.$key, 'add']" class="btn btn-warning text-center">
-                                                            <i class="fas fa-cart-plus" style="font-size: 2rem;"></i>  Agregar al carrito
+                                            <td class="align-middle"><button type="button" (click)="otroProducto(product)" class="btn btn-warning text-center">
+                                                            <i class="fas fa-add" style="font-size: 2rem;"></i>  Agregar a la bolsa
                                                 </button></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        <div class="tab text-center" id="finalizar">
+                            <h3 class="mt-3rem">¡Su bolsa ha sido llenada con exito!</h3>
+                            <p style="text-align: center!important;
+                                                        margin-bottom: 2rem;
+                            color: grey;">Se ha agregado la bolsa a su carrito</p>
+
+                            <div class="fade-in"><i class="far fa-check-circle" style="font-size: 5rem;"></i></div>
+
+                        </div>
                         <div class="row mt-5">
                             <div class="col-sm">
-                                <button type="button" style="width: 100%;" class="btn btn-secondary mb-2" id="prevBtn " (click)="anterior() ">Volver</button>
+                                <button type="button" style="width: 100%;" class="btn btn-secondary mb-2" id="prevBtn " (click)="volverEmpezar() ">Volver a empezar</button>
                             </div>
                             <div class="col-sm">
                                 <button type="button" style="width: 100%;" class="btn btn-warning" id="nextBtn " (click)="siguiente() ">Siguiente</button>
