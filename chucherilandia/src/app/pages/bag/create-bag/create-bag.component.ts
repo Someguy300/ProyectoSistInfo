@@ -260,7 +260,7 @@ export class CreateBagComponent implements OnInit {
     for (let producto of products) {
       if (producto.precio == this.precioDeLaBolsa) {
         if (!this.productFiltered.find(e => e.nombre === producto.nombre)) {
-          if (!this.bolsa.contenido.find(aux => aux.prodId === producto.nombre)) { // cambiar la negacion para que no pueda agregar el mismo producto ya existentes en la bolsa
+          if (!this.bolsa.contenido.find(aux => aux.prodId === producto.$key)) { // cambiar la negacion para que no pueda agregar el mismo producto ya existentes en la bolsa
             this.productFiltered.push(producto)
           }
         }
