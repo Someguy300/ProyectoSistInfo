@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'categoria/create',canActivate: [AdminGuard], component: CreateCategoryComponent},
   { path: 'categoria/:categoryId/update',canActivate: [AdminGuard], component: UpdateCategoryComponent},
   { path: 'admin/message-list',canActivate: [AdminGuard], component: MessageListComponent},
-  { path: 'admin/load-product',canActivate: [AdminGuard], component: LoadProductComponent},
+  { path: 'admin/load-product',canActivate: [AdminGuard], component: ProductFormComponent},
   { path: 'admin/product-list',canActivate: [AdminGuard], component: ProductListComponent},
   { path: 'product/:productId/update',canActivate: [AdminGuard], component: ProductFormComponent},
   { path: 'store',canActivate: [AuthenticationGuard], component: StoreComponent},
