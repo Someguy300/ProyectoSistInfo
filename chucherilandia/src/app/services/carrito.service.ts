@@ -36,8 +36,6 @@ export class CarritoService {
       coste: 0});
   }
 
-  
-
 
   emptyCart(data: Carrito, id: string) {
     data.coste = 0;

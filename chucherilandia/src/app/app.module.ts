@@ -40,7 +40,7 @@ import { ListCategoryComponent } from './pages/admin/category/list-category/list
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { StoreComponent } from './pages/store/store.component';
 import { CreateBagComponent } from './pages/bag/create-bag/create-bag.component';
-//import { CartComponent } from './pages/cart/cart.component';
+import { CarritoComponent } from './pages/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +70,7 @@ import { CreateBagComponent } from './pages/bag/create-bag/create-bag.component'
     ProductFormComponent,
     StoreComponent,
     CreateBagComponent,
-    //CartComponent,
+    CarritoComponent,
   ],
   imports: [
     BrowserModule,
