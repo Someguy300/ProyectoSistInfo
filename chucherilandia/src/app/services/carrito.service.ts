@@ -51,20 +51,11 @@ export class CarritoService {
       coste: 0});
   }
 
-  updateCarrito(id: string): any {
-    return this.carroCollection.doc(id).set({
-      bolsas: [],
-      coste: 0});
-  }
 
-
-
-  emptyCart(id: string) {
-    this.carrito= {
-      bolsas : [],
-      coste : 0,
-    };
-    return this.carroCollection.doc<Carrito>(id).set(this.carrito);
+  emptyCart(data: Carrito, id: string) {
+    data.coste = 0;
+    data.bolsas = [];
+    return this.carroCollection.doc<Carrito>(id).set(data);
   }
 
 
