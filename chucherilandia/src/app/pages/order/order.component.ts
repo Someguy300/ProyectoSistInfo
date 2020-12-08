@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'firebase';
+import { auth,User } from 'firebase';
 import { Bolsa } from 'src/app/models/bolsa';
 import { Metodoenvio } from 'src/app/models/metodoenvio/metodoenvio';
 import { Metodopago } from 'src/app/models/metodopago/metodopago.model';
 import { Order } from 'src/app/models/order';
 import { AuthService } from 'src/app/services/auth.service';
 import { BagService } from 'src/app/services/bag.service';
+import { CarritoService } from 'src/app/services/carrito.service';
 import { MetodoenvioService } from 'src/app/services/metodoenvio/metodoenvio.service';
 import { MetodopagoService } from 'src/app/services/metodopago/metodopago.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -31,6 +32,7 @@ export class OrderComponent implements OnInit {
   constructor(
     private metodoPagoService: MetodopagoService,
     private metodoEnvioService: MetodoenvioService,
+    private carritoService: CarritoService,
     private fb: FormBuilder,
     private bagService: BagService,
     private authService: AuthService,
@@ -129,6 +131,7 @@ export class OrderComponent implements OnInit {
       console.log(this.bolsas[i].$key);
       this.bagService.deleteBag(this.bolsas[i].$key).then((res) => { });
     }
+    this.carritoService.emptyCart(auth().currentUser.uid);
   }
 
   irHome() {
