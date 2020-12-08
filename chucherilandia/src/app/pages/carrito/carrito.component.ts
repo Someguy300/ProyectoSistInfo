@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/app/models/category';
+import { Bolsa } from 'src/app/models/bolsa';
+import { auth, User } from 'firebase';
+import { Product } from 'src/app/models/product';
 import { CarritoService } from 'src/app/services/carrito.service';
 import { ProductService } from 'src/app/services/product.service';
-import { auth, User } from 'firebase';
-import { Bolsa } from 'src/app/models/bolsa';
-import { Product } from 'src/app/models/product';
+
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
@@ -30,6 +30,10 @@ export class CarritoComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCarrito();
+    console.log(this.bolsas)
+    console.log(this.cantidades)
+    console.log(this.precios)
+    console.log(this.productCar)
   }
 
   getCarrito(): void {
@@ -83,13 +87,5 @@ export class CarritoComponent implements OnInit {
     this.loading=false;
   }
 
-  /*
-  deleteCategory(categoryId: string): void {
-    this.loading = true;
-    this.carritoService.emptyCart().then((res) => {
-      this.loading = false;
-    });
-  }
-  */
 
 }

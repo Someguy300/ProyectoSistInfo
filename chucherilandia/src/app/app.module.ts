@@ -42,7 +42,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { StoreComponent } from './pages/store/store.component';
 import { CreateBagComponent } from './pages/bag/create-bag/create-bag.component';
 import { OrderComponent } from './pages/order/order.component';
-//import { CartComponent } from './pages/cart/cart.component';
+import { CarritoComponent } from './pages/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +73,7 @@ import { OrderComponent } from './pages/order/order.component';
     StoreComponent,
     CreateBagComponent,
     OrderComponent,
-    //CartComponent,
+    CarritoComponent,
   ],
   imports: [
     BrowserModule,
