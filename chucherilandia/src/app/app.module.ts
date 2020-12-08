@@ -42,6 +42,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { StoreComponent } from './pages/store/store.component';
 import { CreateBagComponent } from './pages/bag/create-bag/create-bag.component';
 import { OrderComponent } from './pages/order/order.component';
+import { OrderListComponent } from './pages/admin/order-list/order-list.component';
 //import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
@@ -73,6 +74,7 @@ import { OrderComponent } from './pages/order/order.component';
     StoreComponent,
     CreateBagComponent,
     OrderComponent,
+    OrderListComponent,
     //CartComponent,
   ],
   imports: [

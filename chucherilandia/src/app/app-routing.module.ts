@@ -25,7 +25,7 @@ import { StoreComponent } from './pages/store/store.component';
 import { CreateBagComponent } from './pages/bag/create-bag/create-bag.component';
 import { OrderComponent } from './pages/order/order.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
-
+import { OrderListComponent } from './pages/admin/order-list/order-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -49,6 +49,7 @@ const routes: Routes = [
   { path: 'store', component: StoreComponent},
   { path: 'bag/:productId/add',canActivate: [AuthenticationGuard], component: CreateBagComponent},
   { path: 'order' , component: OrderComponent },
+  { path: 'admin/order-list',canActivate: [AuthenticationGuard], component: OrderListComponent},
 
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
