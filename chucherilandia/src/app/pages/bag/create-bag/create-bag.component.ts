@@ -92,12 +92,16 @@ export class CreateBagComponent implements OnInit {
   }
 
   siguiente() {
-    if(this.currentTab != 4){
+    if(this.currentTab == 1 || this.currentTab == 2 || this.currentTab == 3 ){
       this.currentTab++;
       this.hideTabs()
       this.showTab()
-    }else{
+    }else if(this.currentTab == 4){
       this.router.navigate(['store']);
+    }else if(this.currentTab == 5){
+      this.currentTab = 4
+      this.hideTabs()
+      this.showTab()
     }
   }
 
