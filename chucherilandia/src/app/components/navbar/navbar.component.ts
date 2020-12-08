@@ -5,7 +5,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { auth, User } from 'firebase';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Cuenta } from '../../models/cuenta';
-import { CarritoService } from 'src/app/services/carrito.service';
 
 @Component({
   selector: 'app-navbar',
@@ -24,20 +23,10 @@ export class NavbarComponent implements OnInit {
   };
 
 
-  constructor(private authService: AuthService, private router: Router,
-    private carritoService: CarritoService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.getCurrentUser();
-    
-  }
-
-  checkCarrito():void{
-    this.carritoService.getCarrito(auth().currentUser.uid).subscribe((response) => {
-      if(!response.payload.exists){
-        this.carritoService.createCarrito(auth().currentUser.uid)
-      }
-    });
   }
 
   getCurrentUser(): void {
@@ -59,10 +48,6 @@ export class NavbarComponent implements OnInit {
           else if(this.tipo=='admin'){
             this.authService.isAdmin = true;
             this.isAdmin=true;
-          }
-
-          if(this.isAuthenticated && this.isUser){
-            this.checkCarrito();
           }
         });
         return;

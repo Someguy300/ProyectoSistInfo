@@ -24,7 +24,6 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { StoreComponent } from './pages/store/store.component';
 import { CreateBagComponent } from './pages/bag/create-bag/create-bag.component';
 import { OrderComponent } from './pages/order/order.component';
-import { CarritoComponent } from './pages/carrito/carrito.component';
 
 
 const routes: Routes = [
@@ -44,8 +43,7 @@ const routes: Routes = [
   { path: 'admin/message-list',canActivate: [AdminGuard], component: MessageListComponent},
   { path: 'admin/load-product',canActivate: [AdminGuard], component: ProductFormComponent},
   { path: 'admin/product-list',canActivate: [AdminGuard], component: ProductListComponent},
-  { path: 'product/:productId/update',canActivate: [AdminGuard], component: ProductFormComponent},
-  { path: 'carrito',canActivate: [AuthenticationGuard], component: CarritoComponent},
+  { path: 'product/:productId/update',canActivate: [AuthenticationGuard], component: ProductFormComponent},
   { path: 'store',canActivate: [AuthenticationGuard], component: StoreComponent},
   { path: 'bag/:productId/add', component: CreateBagComponent},
   { path: 'order' , component: OrderComponent },
