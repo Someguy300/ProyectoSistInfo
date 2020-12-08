@@ -2,7 +2,7 @@ import { BoundElementPropertyAst } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'firebase';
+import { auth,User } from 'firebase';
 import { Bolsa } from 'src/app/models/bolsa';
 import { Category } from 'src/app/models/category';
 import { ProdRef } from 'src/app/models/prod-ref';
@@ -11,6 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { BagService } from 'src/app/services/bag.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
+import { CarritoService } from 'src/app/services/carrito.service';
+
 
 @Component({
   selector: 'app-create-bag',
@@ -44,6 +46,7 @@ export class CreateBagComponent implements OnInit {
     private authService: AuthService,
     private categoryService: CategoryService,
     private bagService: BagService,
+    private carritoService: CarritoService,
   ) { }
 
   ngOnInit(): void {
@@ -274,6 +277,8 @@ export class CreateBagComponent implements OnInit {
 
   saveBag() {
     console.log("GUARDANDO BOLSA EN FIREBASE", this.bolsa)
+    console.log('uid in create-bag', auth().currentUser.uid)
+    this.carritoService.addToCarrito(auth().currentUser.uid, this.bolsa)
     this.bagService.createBag(this.bolsa)
   }
 

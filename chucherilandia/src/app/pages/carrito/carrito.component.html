@@ -1,0 +1,50 @@
+<div class="container py-5 mt-5" id="Contenedor">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <h1>Carrito</h1>
+                <hr>
+                <div class="row">
+                    <div class="col-sm">
+                        <p class="lead">Lista de las bolsas en tu carrito</p>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="">
+                            <tr>
+                                <th scope="col">Bolsa</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Cantidad producto</th>
+                                <th scope="col">Peso Bolsa</th>
+                                <th scope="col">Coste Bolsa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let bolsa of bolsas">
+                                <td class="align-middle">Bolsa de {{ bolsa.precioComun }}</td>
+                                <td>
+                                    <table>
+                                        <tr *ngFor="let product of productCar">
+                                          <td><img src='{{ product.imageProduct }}' height="50px">{{product.nombre}}</td>
+                                        </tr>
+                                     </table>
+                                </td>
+                                <td class="align-middle">
+                                    <table>
+                                        <tr *ngFor="let cantidad of cantidades">
+                                          <td>{{ cantidad }}</td>
+                                        </tr>
+                                     </table>
+                                </td>
+                                <td class="align-middle">{{ bolsa.pesoTotal }}</td>
+                                <td class="align-middle">{{ bolsa.costoTotal }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
