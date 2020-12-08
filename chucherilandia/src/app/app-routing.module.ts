@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: 'admin/message-list',canActivate: [AdminGuard], component: MessageListComponent},
   { path: 'admin/load-product',canActivate: [AdminGuard], component: ProductFormComponent},
   { path: 'admin/product-list',canActivate: [AdminGuard], component: ProductListComponent},
-  { path: 'product/:productId/update',canActivate: [AuthenticationGuard], component: ProductFormComponent},
+  { path: 'product/:productId/update',canActivate: [AdminGuard], component: ProductFormComponent},
   { path: 'store',canActivate: [AuthenticationGuard], component: StoreComponent},
   { path: 'bag/:productId/add', component: CreateBagComponent},
  
