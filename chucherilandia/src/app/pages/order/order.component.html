@@ -1,0 +1,51 @@
+<div class="container py-5 mt-5" id="Contenedor">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <h1>Completar una orden</h1>
+                <hr>
+
+                <div id="orden" class="tab">
+                    <p class="lead text-center">Información de su orden</p>
+                    <ul class="list-group mb-4" *ngIf="!loading">
+                        <li *ngFor="let bolsa of bolsas" class="list-group-item d-flex justify-content-between align-items-center">
+                            <i class="fas fa-shopping-bag"></i> Bolsa de Bs. {{ bolsa.precioComun }} por cada gramo
+                            <span class="badge bg-primary rounded-pill text-white">{{ bolsa.pesoTotal }} gr</span>
+                        </li>
+                    </ul>
+                    <p class="lead text-center">Selecione la siguiente información solicitada</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Método de pago</span>
+                        </div>
+                        <select class="form-control" [(ngModel)]="MetodoPagoSelected">
+                    <option *ngFor="let metodopago of metodosPago" value="{{ metodopago.nombre }}">{{ metodopago.nombre }}</option>
+                  </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Método de envío</span>
+                        </div>
+                        <select class="form-control" [(ngModel)]="MetodoEnvioSelected">
+                    <option *ngFor="let metodoenvio of metodosEnvio" value="{{ metodoenvio.nombre }}">{{ metodoenvio.nombre }}</option>
+                  </select>
+                    </div>
+                    <button type="button" (click)="onSubmit()" class="btn btn-warning" style="width: 100%;">Aceptar</button>
+                </div>
+
+                <div class="tab text-center" id="listo" style="display: none;">
+                    <h3 class="mt-3rem">¡Su orden ha sido solicitada con exito!</h3>
+                    <p style="text-align: center!important;
+                                                margin-bottom: 2rem;
+                    color: grey;">La tienda procesara su orden</p>
+
+                    <div class="fade-in"><i class="far fa-check-circle" style="font-size: 5rem;"></i></div>
+                    <br>
+                    <button type="button" (click)="irHome()" class="btn btn-warning" style="width: 100%;">Volver a Home</button>
+                    <br>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

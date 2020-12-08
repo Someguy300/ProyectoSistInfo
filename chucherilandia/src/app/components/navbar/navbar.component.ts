@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { auth, User } from 'firebase';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Cuenta } from '../../models/cuenta';
+import { CarritoService } from 'src/app/services/carrito.service';
 
 @Component({
   selector: 'app-navbar',
@@ -23,10 +24,20 @@ export class NavbarComponent implements OnInit {
   };
 
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,
+    private carritoService: CarritoService) {}
 
   ngOnInit(): void {
     this.getCurrentUser();
+    
+  }
+
+  checkCarrito():void{
+    this.carritoService.getCarrito(auth().currentUser.uid).subscribe((response) => {
+      if(!response.payload.exists){
+        this.carritoService.createCarrito(auth().currentUser.uid)
+      }
+    });
   }
 
   getCurrentUser(): void {
@@ -45,7 +56,14 @@ export class NavbarComponent implements OnInit {
             this.tipo = items.payload.data().tipo;
           }
           if(this.tipo=='usuario')this.isUser=true;
-          else if(this.tipo=='admin')this.isAdmin=true;
+          else if(this.tipo=='admin'){
+            this.authService.isAdmin = true;
+            this.isAdmin=true;
+          }
+
+          if(this.isAuthenticated && this.isUser){
+            this.checkCarrito();
+          }
         });
         return;
       }
@@ -64,6 +82,7 @@ export class NavbarComponent implements OnInit {
 
   reset():void{
     this.tipo=null;
+    this.authService.isAdmin = false;
     this.isUser=false;
     this.isAdmin=false;
   }

@@ -24,6 +24,7 @@ export class ProductService {
     return this.productsCollection.snapshotChanges();
   }
 
+
   createProduct(product: Product) {
     const productObj = {
       nombre: product.nombre,

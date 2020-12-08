@@ -22,7 +22,9 @@ import { CreateCategoryComponent } from './pages/admin/category/create-category/
 import { UpdateCategoryComponent } from './pages/admin/category/update-category/update-category.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { StoreComponent } from './pages/store/store.component';
-import { AddCarComponent } from './pages/add-car/add-car.component';
+import { CreateBagComponent } from './pages/bag/create-bag/create-bag.component';
+import { OrderComponent } from './pages/order/order.component';
+import { CarritoComponent } from './pages/carrito/carrito.component';
 
 
 const routes: Routes = [
@@ -40,12 +42,13 @@ const routes: Routes = [
   { path: 'categoria/create',canActivate: [AdminGuard], component: CreateCategoryComponent},
   { path: 'categoria/:categoryId/update',canActivate: [AdminGuard], component: UpdateCategoryComponent},
   { path: 'admin/message-list',canActivate: [AdminGuard], component: MessageListComponent},
-  { path: 'admin/load-product',canActivate: [AdminGuard], component: LoadProductComponent},
+  { path: 'admin/load-product',canActivate: [AdminGuard], component: ProductFormComponent},
   { path: 'admin/product-list',canActivate: [AdminGuard], component: ProductListComponent},
-  { path: 'product/:productId/update',canActivate: [AuthenticationGuard], component: ProductFormComponent},
-  { path: 'store',canActivate: [AuthenticationGuard], component: StoreComponent},
-  { path: 'car/:productId/add', component: AddCarComponent},
- 
+  { path: 'product/:productId/update',canActivate: [AdminGuard], component: ProductFormComponent},
+  { path: 'carrito',canActivate: [AuthenticationGuard], component: CarritoComponent},
+  { path: 'store', component: StoreComponent},
+  { path: 'bag/:productId/add',canActivate: [AuthenticationGuard], component: CreateBagComponent},
+  { path: 'order' , component: OrderComponent },
 
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },

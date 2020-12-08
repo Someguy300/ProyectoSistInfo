@@ -17,6 +17,7 @@ import {
 export class AuthService {
 
   private cuentaCollection: AngularFirestoreCollection<Cuenta>;
+  isAdmin: boolean = false;
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFirestore) {
     this.cuentaCollection = this.db.collection<Cuenta>('cuentas');
@@ -97,10 +98,8 @@ export class AuthService {
     return user !== null;
   }
 
-  /**
-   * LOGIN WITH DIFFERENT FIREBASE PROVIDERS
-   * @param provider
-   */
+  
+
   private authLogin(provider: auth.AuthProvider): Promise<auth.UserCredential> {
     return this.afAuth.signInWithPopup(provider);
   }
@@ -114,16 +113,6 @@ export class AuthService {
     return this.cuentaCollection.doc(newcuenta.$key).set({tipo: newcuenta.tipo});
   }
 
-  isAdmin():boolean{
-    this.getCurrentUser().subscribe((response) => {
-      this.getCuentaTipo(auth().currentUser.uid).subscribe((items) => {
-        console.log(items.payload.data().tipo);
-        if(items.payload.data().tipo=="admin"){
-          return true;
-        }
-      });
-    });
-    return false;
-  }
+  
 
 }
