@@ -77,4 +77,5 @@ export class ProductService {
     return this.productsCollection.doc<Product>(docId).update(data);
   }
 
+
 }
