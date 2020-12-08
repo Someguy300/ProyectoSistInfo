@@ -13,6 +13,7 @@
                     <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> <span class="d-inline-block d-lg-none icon-width"><i class="fas fa-home"></i></span>Home</a>
                 </li>
                 <li class="nav-item px-lg-2"> <a class="nav-link" routerLink="store" routerLinkActive="active" *ngIf="isAuthenticated && isUser"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-sign-out-alt"></i></span>Tienda</a></li>
+                <li class="nav-item px-lg-2"> <a class="nav-link" routerLink="carrito" routerLinkActive="active" *ngIf="isAuthenticated && isUser"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-sign-out-alt"></i></span>Carrito</a></li>
                 <li class="nav-item px-lg-2"> <a class="nav-link" routerLink="contact" routerLinkActive="active"><span class="d-inline-block d-lg-none icon-width" ><i class="fas fa-phone"></i></span>Contáctanos</a> </li>
                 <li class="nav-item px-lg-2"> <a class="nav-link" routerLink="about" routerLinkActive="active"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-store-alt"></i></span>Acerca de Nosotros</a> </li>
                 <!--<li class="nav-item px-lg-2"> <a class="nav-link" *ngIf="isAuthenticated && isUser"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-sign-out-alt"></i></span>Tipo usuario</a></li>-->

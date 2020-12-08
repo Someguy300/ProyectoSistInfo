@@ -20,6 +20,10 @@ import { ProdRef } from '../models/prod-ref';
 export class CarritoService {
 
   private carroCollection: AngularFirestoreCollection<Carrito>;
+  carrito: Carrito = {
+    bolsas : [],
+    coste : 0,
+  };
 
   constructor(private db: AngularFirestore) { 
     this.carroCollection = this.db.collection<Carrito>('carritos');
@@ -29,10 +33,21 @@ export class CarritoService {
     return this.carroCollection.doc<Carrito>(id).snapshotChanges();
   }
 
-  
+  addToCarrito(id: string, bolsa:Bolsa):any{
+    this.getCarrito(id).subscribe((items) => {
+      this.carrito = items.payload.data();
+    });
+    this.carrito.bolsas.push(bolsa);
+    this.carrito.coste = 0;
+    for (let bolsa of this.carrito.bolsas) {
+      this.carrito.coste = this.carrito.coste + bolsa.costoTotal;
+    }
+    this.carroCollection.doc<Carrito>(id).set(this.carrito);
+  }
+
   createCarrito(id: string): any {
     return this.carroCollection.doc(id).set({
-      bolsas: Array,
+      bolsas: [],
       coste: 0});
   }
 
@@ -40,7 +55,7 @@ export class CarritoService {
   emptyCart(data: Carrito, id: string) {
     data.coste = 0;
     data.bolsas = [];
-    return this.carroCollection.doc<Carrito>(id).update(data);
+    return this.carroCollection.doc<Carrito>(id).set(data);
   }
 
 
