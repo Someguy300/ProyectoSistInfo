@@ -26,6 +26,7 @@ import { CreateBagComponent } from './pages/bag/create-bag/create-bag.component'
 import { OrderComponent } from './pages/order/order.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
 import { OrderListComponent } from './pages/admin/order-list/order-list.component';
+import { HistorialComponent } from './pages/admin/historial/historial.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'carrito',canActivate: [AuthenticationGuard], component: CarritoComponent},
   { path: 'order' , component: OrderComponent },
   { path: 'admin/order-list',canActivate: [AuthenticationGuard], component: OrderListComponent},
+  { path: 'admin/historial',canActivate: [AuthenticationGuard], component: HistorialComponent},
 
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },

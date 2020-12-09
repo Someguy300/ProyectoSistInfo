@@ -44,6 +44,7 @@ import { CreateBagComponent } from './pages/bag/create-bag/create-bag.component'
 import { OrderComponent } from './pages/order/order.component';
 import { OrderListComponent } from './pages/admin/order-list/order-list.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
+import { HistorialComponent } from './pages/admin/historial/historial.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
     OrderComponent,
     OrderListComponent,
     CarritoComponent,
+    HistorialComponent,
   ],
   imports: [
     BrowserModule,
