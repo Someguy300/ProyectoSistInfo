@@ -30,10 +30,6 @@ export class CarritoComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCarrito();
-    console.log(this.bolsas)
-    console.log(this.cantidades)
-    console.log(this.precios)
-    console.log(this.productCar)
   }
 
   getCarrito(): void {

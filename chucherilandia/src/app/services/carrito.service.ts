@@ -20,10 +20,14 @@ import { ProdRef } from '../models/prod-ref';
 export class CarritoService {
 
   private carroCollection: AngularFirestoreCollection<Carrito>;
-  carrito: Carrito = {
+  auxCarrito: Carrito = {
     bolsas : [],
     coste : 0,
   };
+  carrito:Carrito = {
+    bolsas : [],
+    coste : 0,
+  }
 
   constructor(private db: AngularFirestore) { 
     this.carroCollection = this.db.collection<Carrito>('carritos');
