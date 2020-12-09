@@ -49,7 +49,9 @@ export class CarritoComponent implements OnInit {
   }
 
   deleteBolsa(bolsa:Bolsa):void{
-    this.bagService.deleteBag(bolsa.$key);
+    this.bagService.deleteBag(bolsa.$key).then((res) => {
+      window.location.reload();
+    });
   }
 
   
