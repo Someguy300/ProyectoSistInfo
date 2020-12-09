@@ -25,7 +25,7 @@ export class OrderComponent implements OnInit {
   bolsas: Array<Bolsa> = [];
   user: User = null;
   loading = false;
-  order: Order = { user: "", metodoPago: "", metodoEnvio: "", bolsas: [], };
+  order: Order = { user: "", total: 0 , metodoPago: "", metodoEnvio: "", bolsas: [], };
   MetodoPagoSelected = "";
   MetodoEnvioSelected = "";
 
@@ -115,9 +115,14 @@ export class OrderComponent implements OnInit {
 
   onSubmit() {
     console.log("Enviado", this.user.email)
+    var total = 0
+    for (let bolsa of this.bolsas){
+      total = total + bolsa.costoTotal 
+    }
     var usuario = this.user.email
     //Generando la orden
     this.order.user = usuario
+    this.order.total = total
     this.order.bolsas = this.bolsas
     this.order.metodoPago = this.MetodoPagoSelected
     this.order.metodoEnvio = this.MetodoEnvioSelected

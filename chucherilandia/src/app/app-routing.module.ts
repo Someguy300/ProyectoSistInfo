@@ -45,9 +45,9 @@ const routes: Routes = [
   { path: 'admin/load-product',canActivate: [AdminGuard], component: ProductFormComponent},
   { path: 'admin/product-list',canActivate: [AdminGuard], component: ProductListComponent},
   { path: 'product/:productId/update',canActivate: [AdminGuard], component: ProductFormComponent},
-  { path: 'carrito',canActivate: [AuthenticationGuard], component: CarritoComponent},
   { path: 'store', component: StoreComponent},
   { path: 'bag/:productId/add',canActivate: [AuthenticationGuard], component: CreateBagComponent},
+  { path: 'carrito',canActivate: [AuthenticationGuard], component: CarritoComponent},
   { path: 'order' , component: OrderComponent },
   { path: 'admin/order-list',canActivate: [AuthenticationGuard], component: OrderListComponent},
 
