@@ -14,46 +14,35 @@
                         <thead>
                             <tr>
                                 <th scope="col">Bolsa</th>
-                                <th scope="col">Productos en bolsa</th>
-                                <th scope="col">Peso Bolsa</th>
-                                <th scope="col">Coste Bolsa</th>
+                                <th class="text-center" scope="col">Productos en bolsa</th>
+                                <th class="text-center" scope="col">Peso Bolsa</th>
+                                <th class="text-center" scope="col">Coste Bolsa</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let bolsa of bolsas">
-                                <td class="align-middle">Bolsa de {{ bolsa.precioComun }}$</td>
+                                <td class="align-middle">Bolsa de Bs. {{ bolsa.precioComun }}</td>
                                 <td>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Cantidad</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let prodRef of bolsa.contenido">
-                                            <td>{{prodRef.nombre}}</td>
-                                            <td>{{prodRef.cantidad}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <p *ngFor="let prodRef of bolsa.contenido" class="mb-0"><small class="text-muted">  <i class="fas fa-candy-cane"></i> <u>Producto:</u> {{ prodRef.nombre }}  <i class="fas fa-long-arrow-alt-right"></i>  <i class="fas fa-weight"></i> <u>Peso:</u> {{prodRef.cantidad}} </small></p>
                                 </td>
-                                <td class="align-middle">{{ bolsa.pesoTotal }}</td>
-                                <td class="align-middle">{{ bolsa.costoTotal }}</td>
-                                <td class="align-middle"><button type="button" class="btn btn-danger btn-sm" (click)="deleteBolsa(bolsa)">
+                                <td class="align-middle text-center">{{ bolsa.pesoTotal }} gr</td>
+                                <td class="align-middle text-center">Bs. {{ bolsa.costoTotal }}</td>
+                                <td class="align-middle text-center"><button type="button" class="btn btn-danger btn-sm" (click)="deleteBolsa(bolsa)">
                                     <i class="fas fa-trash"></i>  Eliminar Bolsa
                                     </button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <a *ngIf="tieneAlgo()" class="btn btn-warning btn-sm" href="order">
-                        Crear Orden de Compra!
-                    </a>
+                    <div class="text-center">
+                        <a *ngIf="tieneAlgo()" class="btn btn-warning" href="order">
+                            &nbsp;&nbsp;&nbsp; ¡Crear Orden de Compra! &nbsp;&nbsp;&nbsp;
+                        </a>
+                    </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
 </div>
-
