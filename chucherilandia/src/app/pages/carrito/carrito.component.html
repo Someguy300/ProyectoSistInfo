@@ -22,7 +22,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let bolsa of bolsas">
-                                <td class="align-middle">Bolsa de Bs. {{ bolsa.precioComun }}</td>
+                                <td class="align-middle"><i class="fas fa-shopping-bag"></i>  Bolsa de Bs. {{ bolsa.precioComun }}</td>
                                 <td>
                                     <p *ngFor="let prodRef of bolsa.contenido" class="mb-0"><small class="text-muted">  <i class="fas fa-candy-cane"></i> <u>Producto:</u> {{ prodRef.nombre }}  <i class="fas fa-long-arrow-alt-right"></i>  <i class="fas fa-weight"></i> <u>Peso:</u> {{prodRef.cantidad}} gr</small></p>
                                 </td>
