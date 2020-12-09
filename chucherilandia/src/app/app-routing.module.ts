@@ -49,7 +49,7 @@ const routes: Routes = [
   { path: 'store', component: StoreComponent},
   { path: 'bag/:productId/add',canActivate: [AuthenticationGuard], component: CreateBagComponent},
   { path: 'carrito',canActivate: [AuthenticationGuard], component: CarritoComponent},
-  { path: 'order' , component: OrderComponent },
+  { path: 'order' ,canActivate: [AuthenticationGuard], component: OrderComponent },
   { path: 'admin/order-list',canActivate: [AuthenticationGuard], component: OrderListComponent},
   { path: 'admin/historial',canActivate: [AuthenticationGuard], component: HistorialComponent},
 

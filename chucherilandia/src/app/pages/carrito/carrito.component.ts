@@ -24,6 +24,10 @@ export class CarritoComponent implements OnInit {
     this.makeCarrito();
   }
 
+  tieneAlgo():boolean{
+    if(this.bolsas.length!=0)return true;
+    else return false
+  }
 
   makeCarrito():void{
     this.bagService.getAllBags().subscribe((items) => {
