@@ -29,10 +29,12 @@ export class CreateBagComponent implements OnInit {
   productForm: FormGroup;
   loading = false;
   currentTab = 1;
+  auxBolsa: Bolsa = { user: null, precioComun: 0, costoTotal: 0, pesoTotal: 0, contenido: [], };
   bolsa: Bolsa = { user: null, precioComun: 0, costoTotal: 0, pesoTotal: 0, contenido: [], };
   value = 0; // Peso
   indiceBolsa = 0
   porcientoPeso: string
+  bolsas: Array<Bolsa> = [];
   products: Array<Product> = [];
   categorys: Array<Category> = [];
   productFiltered: Array<Product> = [];
@@ -279,8 +281,9 @@ export class CreateBagComponent implements OnInit {
   saveBag() {
     console.log("GUARDANDO BOLSA EN FIREBASE", this.bolsa)
     console.log('uid in create-bag', auth().currentUser.uid)
-    this.carritoService.addToCarrito(auth().currentUser.uid, this.bolsa)
     this.bagService.createBag(this.bolsa)
+    
+    
   }
 
 }

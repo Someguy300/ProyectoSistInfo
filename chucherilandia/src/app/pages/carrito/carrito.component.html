@@ -40,6 +40,10 @@
                                 </td>
                                 <td class="align-middle">{{ bolsa.pesoTotal }}</td>
                                 <td class="align-middle">{{ bolsa.costoTotal }}</td>
+                                <td class="align-middle"><button type="button" class="btn btn-danger btn-sm" (click)="deleteBolsa(bolsa)">
+                                    <i class="fas fa-trash"></i>  Eliminar Bolsa
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

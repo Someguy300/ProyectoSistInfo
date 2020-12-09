@@ -13,6 +13,7 @@ import {
 import { Bolsa } from '../models/bolsa';
 import { Product } from '../models/product';
 import { ProdRef } from '../models/prod-ref';
+import { BagService } from './bag.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,16 +21,13 @@ import { ProdRef } from '../models/prod-ref';
 export class CarritoService {
 
   private carroCollection: AngularFirestoreCollection<Carrito>;
-  auxCarrito: Carrito = {
-    bolsas : [],
-    coste : 0,
-  };
+
   carrito:Carrito = {
     bolsas : [],
     coste : 0,
   }
 
-  constructor(private db: AngularFirestore) { 
+  constructor(private db: AngularFirestore, private bagService: BagService) { 
     this.carroCollection = this.db.collection<Carrito>('carritos');
   }
 
@@ -37,7 +35,7 @@ export class CarritoService {
     return this.carroCollection.doc<Carrito>(id).snapshotChanges();
   }
 
-  addToCarrito(id: string, bolsa:Bolsa):any{
+  addToCarrito(id: string, bolsa:Bolsa):void{
     this.getCarrito(id).subscribe((items) => {
       this.carrito = items.payload.data();
     });
@@ -48,6 +46,26 @@ export class CarritoService {
     }
     this.carroCollection.doc<Carrito>(id).set(this.carrito);
   }
+
+  deleteBolsa(bolsa:Bolsa):void{
+    this.getCarrito(auth().currentUser.uid).subscribe((items) => {
+      this.carrito = items.payload.data();
+    });
+    
+    console.log('preborrar',this.carrito)
+
+    this.carrito.bolsas.forEach( (item, index) => {
+      if(item === bolsa) this.carrito.bolsas.splice(index,1);
+    });
+
+    console.log('postborrar',this.carrito)
+    this.carrito.coste = this.carrito.coste - bolsa.costoTotal;
+    
+    this.carroCollection.doc<Carrito>(auth().currentUser.uid).set(this.carrito);
+    
+  }
+
+  
 
   createCarrito(id: string): any {
     return this.carroCollection.doc(id).set({
