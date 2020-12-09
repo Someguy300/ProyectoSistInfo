@@ -201,6 +201,7 @@ export class CreateBagComponent implements OnInit {
   Embolsar() {
     var ProdRef: ProdRef = {
       prodId: this.selectedProduct.$key,
+      nombre: this.selectedProduct.nombre,
       cantidad: Number(this.value),
     };
     if (this.indiceBolsa == 0) {// Primer producto de la bolsa

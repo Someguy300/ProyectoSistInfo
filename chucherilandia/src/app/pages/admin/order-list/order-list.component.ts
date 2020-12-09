@@ -15,8 +15,7 @@ export class OrderListComponent implements OnInit {
   loading = false;
   orders: any;
   ordersObject: Order;
-  product: Product;
-
+  keys = ['', ''];
 
 
   constructor(
@@ -26,6 +25,7 @@ export class OrderListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOrdenes();
+
   }
 
   getOrdenes(): void {
@@ -42,25 +42,6 @@ export class OrderListComponent implements OnInit {
       this.ordersObject = this.orders
       console.log("ORDENES", this.orders)
     });
-  }
-
-
-  generarBolsa(answers: []) {
-    return Object.keys(answers).map(key => answers[key])
-  }
-
-
-  getName(key: string) {
-    console.log(key)
-    this.loading = true
-    this.productService.getProduct(key).subscribe((item) => {
-      this.product = {
-        $key: item.payload.id,
-        ...item.payload.data(),
-      };
-    });
-    this.loading =false
-    return(this.product.nombre)
   }
 
 
