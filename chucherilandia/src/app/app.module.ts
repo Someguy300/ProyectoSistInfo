@@ -24,7 +24,6 @@ import { MessageListComponent } from './pages/admin/message-list/message-list.co
 import { AngularFireModule } from '@angular/fire';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { firebaseConfig } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -83,7 +82,7 @@ import { HistorialComponent } from './pages/admin/historial/historial.component'
     BrowserModule,
     CommonModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     BrowserModule, 
     FormsModule,
